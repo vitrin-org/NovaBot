@@ -3,256 +3,157 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NovaBot - Chatbot Design</title>
+    <title>NovaBot - Chatbot Mockup</title>
     <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Vazirmatn', sans-serif; background: #f0f2f5; display: flex; justify-content: center; align-items: center; min-height: 100vh; gap: 40px; padding: 40px; }
+        body { font-family: 'Vazirmatn', sans-serif; background: #f3f4f6; display: flex; justify-content: center; align-items: center; min-height: 100vh; gap: 40px; padding: 40px; flex-wrap: wrap; }
 
-        .phone-frame {
+        .frame-wrapper { position: relative; margin-bottom: 40px; }
+
+        .phone {
             width: 380px;
-            height: 700px;
-            background: #fff;
-            border-radius: 40px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+            height: 540px;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.12);
             overflow: hidden;
-            position: relative;
-            border: 8px solid #1a1a1a;
-        }
-
-        .phone-notch {
-            position: absolute;
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 120px;
-            height: 28px;
-            background: #1a1a1a;
-            border-radius: 0 0 20px 20px;
-            z-index: 10;
-        }
-
-        .chat-container {
-            height: 100%;
             display: flex;
             flex-direction: column;
-            background: #fafafa;
+            border: 1px solid #e5e7eb;
         }
 
-        .chat-header {
-            background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
-            padding: 40px 16px 14px;
+        /* Header */
+        .header {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            color: white;
+            padding: 12px 16px;
+            border-bottom: 1px solid #f3f4f6;
         }
-
-        .header-right {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .header-icon {
-            width: 32px;
-            height: 32px;
-            background: rgba(255,255,255,0.2);
+        .header-left { display: flex; align-items: center; gap: 8px; }
+        .header-btn {
+            width: 28px;
+            height: 28px;
             border-radius: 8px;
             display: flex;
             align-items: center;
             justify-content: center;
+            color: #9ca3af;
+            cursor: pointer;
+            background: none;
+            border: none;
             font-size: 16px;
         }
+        .header-btn:hover { background: #f3f4f6; color: #6b7280; }
+        .header-title { font-size: 14px; font-weight: 600; color: #111827; }
+        .header-sub { font-size: 11px; color: #9ca3af; }
+        .close-btn { color: #9ca3af; background: none; border: none; cursor: pointer; font-size: 18px; }
 
-        .header-title h3 {
-            font-size: 15px;
-            font-weight: 700;
-        }
+        /* Body */
+        .body { flex: 1; overflow-y: auto; padding: 16px; display: flex; flex-direction: column; gap: 12px; }
 
-        .header-title p {
-            font-size: 11px;
-            opacity: 0.8;
-        }
-
-        .chat-body {
-            flex: 1;
-            overflow-y: auto;
-            padding: 16px;
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-
-        .message {
-            max-width: 85%;
-            padding: 10px 14px;
-            border-radius: 16px;
-            font-size: 13px;
-            line-height: 1.7;
-        }
-
-        .message.user {
-            background: #2563eb;
-            color: white;
-            align-self: flex-end;
-            border-bottom-right-radius: 4px;
-        }
-
-        .message.ai {
-            background: white;
-            color: #1f2937;
-            align-self: flex-start;
-            border-bottom-left-radius: 4px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.08);
-        }
-
-        .product-card {
-            background: white;
-            border: 2px solid #e5e7eb;
-            border-radius: 14px;
-            padding: 14px;
-            margin-top: 8px;
-        }
-
-        .product-card.featured {
-            border-color: #f59e0b;
-            background: linear-gradient(135deg, #fffbeb 0%, #ffffff 100%);
-        }
-
-        .featured-badge {
-            display: inline-block;
-            background: #f59e0b;
-            color: #78350f;
-            font-size: 10px;
-            font-weight: 700;
-            padding: 2px 8px;
-            border-radius: 20px;
-            margin-bottom: 6px;
-        }
-
-        .product-name {
-            font-size: 14px;
-            font-weight: 700;
-            color: #111827;
-            margin-bottom: 4px;
-        }
-
-        .product-role {
-            display: inline-block;
-            background: #eff6ff;
-            color: #1d4ed8;
-            font-size: 11px;
-            font-weight: 500;
-            padding: 2px 8px;
-            border-radius: 6px;
-            margin-bottom: 8px;
-        }
-
-        .product-desc {
-            font-size: 12px;
-            color: #6b7280;
-            line-height: 1.6;
-            margin-bottom: 8px;
-        }
-
-        .product-tags {
-            display: flex;
-            gap: 6px;
-            margin-bottom: 10px;
-        }
-
-        .product-tag {
-            background: #f3f4f6;
-            color: #6b7280;
-            font-size: 10px;
-            padding: 2px 8px;
-            border-radius: 6px;
-        }
-
-        .match-bar {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            border-top: 1px solid #f3f4f6;
-            padding-top: 8px;
-        }
-
-        .match-bar-bg {
-            flex: 1;
-            height: 6px;
-            background: #f3f4f6;
-            border-radius: 3px;
-            overflow: hidden;
-        }
-
-        .match-bar-fill {
-            height: 100%;
-            background: #2563eb;
-            border-radius: 3px;
-        }
-
-        .match-label {
-            font-size: 10px;
-            color: #9ca3af;
-            white-space: nowrap;
-        }
-
-        .chat-input {
-            padding: 12px 16px;
-            border-top: 1px solid #e5e7eb;
-            display: flex;
-            gap: 8px;
-            background: white;
-        }
-
-        .chat-input input {
-            flex: 1;
+        /* Quiz */
+        .quiz-label { font-size: 14px; font-weight: 600; color: #111827; margin-bottom: 8px; }
+        .pills { display: flex; flex-wrap: wrap; gap: 8px; }
+        .pill {
             border: 1.5px solid #e5e7eb;
-            border-radius: 10px;
-            padding: 10px 14px;
+            border-radius: 9999px;
+            padding: 6px 14px;
+            font-size: 13px;
+            color: #4b5563;
+            cursor: pointer;
+            background: white;
+            font-family: 'Vazirmatn', sans-serif;
+        }
+        .pill.selected { border-color: #3b82f6; background: #eff6ff; color: #1d4ed8; font-weight: 600; }
+        .pill:hover { border-color: #d1d5db; }
+
+        .textarea {
+            width: 100%;
+            border: 1.5px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 10px 12px;
             font-family: 'Vazirmatn', sans-serif;
             font-size: 13px;
+            resize: none;
             outline: none;
             direction: rtl;
+            line-height: 1.6;
         }
+        .textarea:focus { border-color: #3b82f6; }
 
-        .chat-input input:focus {
-            border-color: #2563eb;
-        }
-
-        .chat-input button {
+        .btn {
             background: #2563eb;
             color: white;
             border: none;
-            border-radius: 10px;
-            padding: 10px 18px;
+            border-radius: 8px;
+            padding: 8px 16px;
             font-family: 'Vazirmatn', sans-serif;
             font-size: 13px;
             font-weight: 600;
             cursor: pointer;
+            align-self: flex-start;
         }
+        .btn:hover { background: #1d4ed8; }
 
+        /* Basket Header */
         .basket-header {
-            background: linear-gradient(135deg, #eff6ff 0%, #f0fdf4 100%);
-            border-radius: 14px;
+            background: linear-gradient(135deg, #eff6ff, #f0fdf4);
+            border-radius: 12px;
             padding: 14px;
-            margin-bottom: 8px;
         }
+        .basket-title { font-size: 15px; font-weight: 700; color: #111827; margin-bottom: 4px; }
+        .basket-desc { font-size: 12px; color: #6b7280; line-height: 1.6; }
 
-        .basket-title {
-            font-size: 15px;
+        /* Product Card */
+        .product-card {
+            border: 2px solid #f3f4f6;
+            border-radius: 12px;
+            padding: 16px;
+            background: white;
+        }
+        .product-card.featured {
+            border-color: #fcd34d;
+            background: linear-gradient(135deg, #fffbeb, #ffffff);
+        }
+        .featured-badge {
+            display: inline-block;
+            background: #fbbf24;
+            color: #78350f;
+            font-size: 11px;
             font-weight: 700;
-            color: #111827;
-            margin-bottom: 4px;
+            padding: 2px 10px;
+            border-radius: 9999px;
+            margin-bottom: 8px;
+            box-shadow: 0 1px 3px rgba(251, 191, 36, 0.3);
         }
-
-        .basket-desc {
+        .product-name { font-size: 18px; font-weight: 700; color: #111827; margin-bottom: 4px; line-height: 1.3; }
+        .product-role {
+            display: inline-block;
+            background: #eff6ff;
+            color: #1d4ed8;
             font-size: 12px;
-            color: #6b7280;
-            line-height: 1.6;
+            font-weight: 500;
+            padding: 2px 8px;
+            border-radius: 6px;
+            margin-bottom: 10px;
         }
+        .product-desc { font-size: 13px; color: #6b7280; line-height: 1.6; margin-bottom: 10px; }
+        .product-tags { display: flex; gap: 6px; margin-bottom: 12px; }
+        .product-tag {
+            background: #f3f4f6;
+            color: #6b7280;
+            font-size: 11px;
+            padding: 2px 8px;
+            border-radius: 6px;
+        }
+        .match-row { display: flex; align-items: center; gap: 8px; border-top: 1px solid #f3f4f6; padding-top: 10px; }
+        .match-bar { flex: 1; height: 6px; background: #f3f4f6; border-radius: 3px; overflow: hidden; }
+        .match-fill { height: 100%; background: #3b82f6; border-radius: 3px; }
+        .match-pct { font-size: 11px; color: #9ca3af; white-space: nowrap; }
 
+        /* Cost bar */
         .cost-bar {
             background: #f9fafb;
             border-radius: 10px;
@@ -261,230 +162,254 @@
             justify-content: space-between;
             align-items: center;
         }
-
-        .cost-label { font-size: 11px; color: #9ca3af; }
+        .cost-label { font-size: 12px; color: #9ca3af; }
         .cost-value { font-size: 13px; font-weight: 700; color: #374151; }
 
-        /* Quiz */
-        .quiz-container { padding: 8px 0; }
-        .quiz-question { font-size: 14px; font-weight: 600; color: #111827; margin-bottom: 12px; }
-        .quiz-options { display: flex; flex-wrap: wrap; gap: 8px; }
-        .quiz-option {
-            border: 1.5px solid #e5e7eb;
-            border-radius: 20px;
-            padding: 8px 16px;
-            font-size: 12px;
-            color: #6b7280;
-            cursor: pointer;
-            transition: all 0.2s;
+        /* Messages */
+        .msg { max-width: 85%; padding: 10px 14px; border-radius: 16px; font-size: 13px; line-height: 1.7; }
+        .msg.user { background: #2563eb; color: white; align-self: flex-end; border-bottom-right-radius: 4px; }
+        .msg.ai { background: #f3f4f6; color: #1f2937; align-self: flex-start; border-bottom-left-radius: 4px; }
+
+        /* Input */
+        .input-bar {
+            padding: 12px 16px;
+            border-top: 1px solid #f3f4f6;
+            display: flex;
+            gap: 8px;
+            background: white;
         }
-        .quiz-option:hover { border-color: #2563eb; color: #2563eb; }
-        .quiz-option.selected {
-            border-color: #2563eb;
-            background: #eff6ff;
-            color: #1d4ed8;
+        .input-bar input {
+            flex: 1;
+            border: 1.5px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 8px 12px;
+            font-family: 'Vazirmatn', sans-serif;
+            font-size: 13px;
+            outline: none;
+            direction: rtl;
+        }
+        .input-bar input:focus { border-color: #3b82f6; }
+        .send-btn {
+            background: #2563eb;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 8px 16px;
+            font-family: 'Vazirmatn', sans-serif;
+            font-size: 13px;
             font-weight: 600;
+            cursor: pointer;
         }
 
-        .label {
-            position: absolute;
-            bottom: -30px;
-            left: 50%;
-            transform: translateX(-50%);
+        .frame-label {
+            text-align: center;
             font-size: 12px;
             color: #9ca3af;
-            white-space: nowrap;
+            margin-top: 12px;
         }
 
-        .frame-wrapper {
-            position: relative;
-            margin-bottom: 40px;
-        }
-
-        h2.page-title {
-            text-align: center;
-            font-size: 28px;
-            font-weight: 700;
-            color: #111827;
-            margin-bottom: 10px;
-        }
-        p.page-subtitle {
-            text-align: center;
-            font-size: 14px;
-            color: #6b7280;
-            margin-bottom: 40px;
-        }
+        h2.page-title { text-align: center; font-size: 24px; font-weight: 700; color: #111827; margin-bottom: 8px; }
+        p.page-sub { text-align: center; font-size: 13px; color: #6b7280; margin-bottom: 32px; }
     </style>
 </head>
 <body>
     <div>
-        <h2 class="page-title">NovaBot UI Design</h2>
-        <p class="page-subtitle">طراحی رابط کاربری چت‌بات هوشمند نوابات</p>
+        <h2 class="page-title">NovaBot Chat UI</h2>
+        <p class="page-sub">رابط کاربری چت‌بات — دقیقاً مطابق کد واقعی</p>
+        <div style="display:flex; gap:32px; justify-content:center; flex-wrap:wrap;">
 
-        <div style="display: flex; gap: 40px; align-items: flex-start; justify-content: center; flex-wrap: wrap;">
-
-            <!-- Frame 1: Quiz -->
+            <!-- Frame 1: Quiz Step 1 -->
             <div class="frame-wrapper">
-                <div class="phone-frame">
-                    <div class="phone-notch"></div>
-                    <div class="chat-container">
-                        <div class="chat-header">
-                            <div class="header-right">
-                                <div class="header-icon">🔄</div>
-                                <div>
-                                    <div class="header-title">
-                                        <h3>نوابات</h3>
-                                        <p>بهترین ابزارها را پیدا کنید</p>
-                                    </div>
-                                </div>
+                <div class="phone">
+                    <div class="header">
+                        <div class="header-left">
+                            <div class="header-btn" style="font-size:14px;">🕐</div>
+                            <div class="header-btn" style="font-size:16px;">＋</div>
+                            <div>
+                                <div class="header-title">نوابات</div>
+                                <div class="header-sub">بهترین ابزارها را برای کسب‌وکارتان پیدا کنید</div>
                             </div>
-                            <div class="header-icon">✕</div>
                         </div>
-                        <div class="chat-body">
-                            <div class="quiz-container">
-                                <div class="quiz-question">حوزه کاری شما چیست؟</div>
-                                <div class="quiz-options">
-                                    <div class="quiz-option selected">برنامه‌نویسی</div>
-                                    <div class="quiz-option">فروشگاه آنلاین</div>
-                                    <div class="quiz-option">بازاریابی</div>
-                                    <div class="quiz-option">طراحی</div>
-                                    <div class="quiz-option">مالی</div>
-                                    <div class="quiz-option">آموزش</div>
-                                </div>
-                            </div>
+                        <div class="close-btn">✕</div>
+                    </div>
+                    <div class="body">
+                        <div class="quiz-label">حوزه کاری شما چیست؟</div>
+                        <div class="pills">
+                            <div class="pill">فروشگاه آنلاین</div>
+                            <div class="pill">نرم‌افزار (SaaS)</div>
+                            <div class="pill">بازاریابی</div>
+                            <div class="pill selected">برنامه‌نویسی</div>
+                            <div class="pill">طراحی</div>
+                            <div class="pill">مالی و حسابداری</div>
+                            <div class="pill">سلامت</div>
+                            <div class="pill">آموزش</div>
                         </div>
                     </div>
                 </div>
-                <div class="label">مرحله ۱: انتخاب حوزه</div>
+                <div class="frame-label">مرحله ۱: انتخاب حوزه</div>
             </div>
 
-            <!-- Frame 2: Basket -->
+            <!-- Frame 2: Quiz Step 2 -->
             <div class="frame-wrapper">
-                <div class="phone-frame">
-                    <div class="phone-notch"></div>
-                    <div class="chat-container">
-                        <div class="chat-header">
-                            <div class="header-right">
-                                <div class="header-icon">🔄</div>
-                                <div>
-                                    <div class="header-title">
-                                        <h3>نوابات</h3>
-                                        <p>بهترین ابزارها را پیدا کنید</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="header-icon">✕</div>
-                        </div>
-                        <div class="chat-body">
-                            <div class="basket-header">
-                                <div class="basket-title">پکیج بهینه بررسی کد</div>
-                                <div class="basket-desc">ابزارهای مناسب برای مدیریت و بررسی کد در تیم شما انتخاب شدند.</div>
-                            </div>
-
-                            <div class="product-card featured">
-                                <div class="featured-badge">پیشنهاد ویژه</div>
-                                <div class="product-name">TaskFlow Pro</div>
-                                <div class="product-role">ابزار اصلی</div>
-                                <div class="product-desc">ابزار مدیریت پروژه با اولویت‌بندی هوشمند وظایف</div>
-                                <div class="product-tags">
-                                    <span class="product-tag">مدیریت پروژه</span>
-                                    <span class="product-tag">اشتراکی</span>
-                                </div>
-                                <div class="match-bar">
-                                    <div class="match-bar-bg"><div class="match-bar-fill" style="width: 85%"></div></div>
-                                    <span class="match-label">۸۵٪ تطابق</span>
-                                </div>
-                            </div>
-
-                            <div class="product-card">
-                                <div class="product-name">CodeReview AI</div>
-                                <div class="product-role">سرویس مکمل</div>
-                                <div class="product-desc">بررسی خودکار کد با هوش مصنوعی</div>
-                                <div class="product-tags">
-                                    <span class="product-tag">ابزار توسعه</span>
-                                    <span class="product-tag">رایگان</span>
-                                </div>
-                                <div class="match-bar">
-                                    <div class="match-bar-bg"><div class="match-bar-fill" style="width: 78%"></div></div>
-                                    <span class="match-label">۷۸٪ تطابق</span>
-                                </div>
-                            </div>
-
-                            <div class="cost-bar">
-                                <span class="cost-label">هزینه تقریبی</span>
-                                <span class="cost-value">۲ تا ۸ میلیون تومان</span>
+                <div class="phone">
+                    <div class="header">
+                        <div class="header-left">
+                            <div class="header-btn">🕐</div>
+                            <div class="header-btn">＋</div>
+                            <div>
+                                <div class="header-title">نوابات</div>
+                                <div class="header-sub">بهترین ابزارها را برای کسب‌وکارتان پیدا کنید</div>
                             </div>
                         </div>
-                        <div class="chat-input">
-                            <input type="text" placeholder="درباره پیشنهادات سوال بپرسید...">
-                            <button>ارسال</button>
-                        </div>
+                        <div class="close-btn">✕</div>
+                    </div>
+                    <div class="body">
+                        <div class="quiz-label">چالش اصلی شما چیست؟</div>
+                        <textarea class="textarea" rows="3" placeholder="مثلاً: نیاز به ابزار مدیریت پروژه بهتر برای تیم ریموت...">نیاز به ابزار بررسی کد بهتر برای تیم دورکار</textarea>
+                        <button class="btn">بعدی</button>
                     </div>
                 </div>
-                <div class="label">مرحله ۲: نمایش سبد محصول</div>
+                <div class="frame-label">مرحله ۲: توضیح چالش</div>
             </div>
 
-            <!-- Frame 3: Chat -->
+            <!-- Frame 3: Quiz Step 3 -->
             <div class="frame-wrapper">
-                <div class="phone-frame">
-                    <div class="phone-notch"></div>
-                    <div class="chat-container">
-                        <div class="chat-header">
-                            <div class="header-right">
-                                <div class="header-icon">🔄</div>
-                                <div>
-                                    <div class="header-title">
-                                        <h3>نوابات</h3>
-                                        <p>بهترین ابزارها را پیدا کنید</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="header-icon">✕</div>
-                        </div>
-                        <div class="chat-body">
-                            <div class="basket-header">
-                                <div class="basket-title">پکیج بهینه بررسی کد</div>
-                                <div class="basket-desc">ابزارهای مناسب برای مدیریت و بررسی کد انتخاب شدند.</div>
-                            </div>
-
-                            <div class="product-card featured" style="margin-bottom: 0;">
-                                <div class="featured-badge">پیشنهاد ویژه</div>
-                                <div class="product-name">TaskFlow Pro</div>
-                                <div class="product-role">ابزار اصلی</div>
-                                <div class="match-bar">
-                                    <div class="match-bar-bg"><div class="match-bar-fill" style="width: 85%"></div></div>
-                                    <span class="match-label">۸۵٪</span>
-                                </div>
-                            </div>
-
-                            <div class="message user">
-                                درباره TaskFlow Pro بیشتر توضیح بده
-                            </div>
-
-                            <div class="message ai">
-                                <strong>TaskFlow Pro</strong> یک ابزار مدیریت پروژه قدرتمند است:<br><br>
-                                • <strong>اولویت‌بندی هوشمند</strong> وظایف با AI<br>
-                                • <strong>نمودار گانت</strong> و تخته کانبان<br>
-                                • <strong>ردیابی زمان</strong> و گزارش‌ها<br>
-                                • <strong>积分:</strong> Slack, GitHub, Jira<br><br>
-                                قیمت: از <strong>۱۰ دلار/ماه</strong>
-                            </div>
-
-                            <div class="message user">
-                                آیا برای تیم کوچک مناسبه؟
-                            </div>
-
-                            <div class="message ai">
-                                بله! ویژگی <strong>رایگان</strong> آن تا ۱۰ کاربر پشتیبانی می‌کند. برای تیم‌های کوچک ایده‌آل است. 💡
+                <div class="phone">
+                    <div class="header">
+                        <div class="header-left">
+                            <div class="header-btn">🕐</div>
+                            <div class="header-btn">＋</div>
+                            <div>
+                                <div class="header-title">نوابات</div>
+                                <div class="header-sub">بهترین ابزارها را برای کسب‌وکارتان پیدا کنید</div>
                             </div>
                         </div>
-                        <div class="chat-input">
-                            <input type="text" placeholder="درباره پیشنهادات سوال بپرسید...">
-                            <button>ارسال</button>
+                        <div class="close-btn">✕</div>
+                    </div>
+                    <div class="body">
+                        <div class="quiz-label">محدوده بودجه شما چقدر است؟</div>
+                        <div class="pills">
+                            <div class="pill">رایگان</div>
+                            <div class="pill">کمتر از ۲ میلیون تومان</div>
+                            <div class="pill selected">۲ تا ۸ میلیون تومان</div>
+                            <div class="pill">۸ تا ۲۰ میلیون تومان</div>
+                            <div class="pill">بیشتر از ۲۰ میلیون تومان</div>
                         </div>
+                        <button class="btn">دریافت پیشنهادات</button>
                     </div>
                 </div>
-                <div class="label">مرحله ۳: گفتگوی هوشمند</div>
+                <div class="frame-label">مرحله ۳: انتخاب بودجه</div>
+            </div>
+
+            <!-- Frame 4: Basket Result -->
+            <div class="frame-wrapper">
+                <div class="phone">
+                    <div class="header">
+                        <div class="header-left">
+                            <div class="header-btn">🕐</div>
+                            <div class="header-btn">＋</div>
+                            <div>
+                                <div class="header-title">نوابات</div>
+                                <div class="header-sub">بهترین ابزارها را برای کسب‌وکارتان پیدا کنید</div>
+                            </div>
+                        </div>
+                        <div class="close-btn">✕</div>
+                    </div>
+                    <div class="body">
+                        <div class="basket-header">
+                            <div class="basket-title">پکیج بهینه بررسی کد</div>
+                            <div class="basket-desc">ابزارهای مناسب برای مدیریت و بررسی کد در تیم شما انتخاب شدند.</div>
+                        </div>
+
+                        <div class="product-card featured">
+                            <div class="featured-badge">پیشنهاد ویژه</div>
+                            <div class="product-name">TaskFlow Pro</div>
+                            <div class="product-role">ابزار اصلی</div>
+                            <div class="product-desc">ابزار مدیریت پروژه با اولویت‌بندی هوشمند وظایف</div>
+                            <div class="product-tags">
+                                <span class="product-tag">مدیریت پروژه</span>
+                                <span class="product-tag">اشتراکی</span>
+                            </div>
+                            <div class="match-row">
+                                <div class="match-bar"><div class="match-fill" style="width:85%"></div></div>
+                                <span class="match-pct">۸۵٪</span>
+                            </div>
+                        </div>
+
+                        <div class="product-card">
+                            <div class="product-name">CodeReview AI</div>
+                            <div class="product-role">سرویس مکمل</div>
+                            <div class="product-tags">
+                                <span class="product-tag">ابزار توسعه</span>
+                                <span class="product-tag">رایگان</span>
+                            </div>
+                            <div class="match-row">
+                                <div class="match-bar"><div class="match-fill" style="width:78%"></div></div>
+                                <span class="match-pct">۷۸٪</span>
+                            </div>
+                        </div>
+
+                        <div class="cost-bar">
+                            <span class="cost-label">هزینه تقریبی</span>
+                            <span class="cost-value">۲ تا ۸ میلیون تومان</span>
+                        </div>
+                    </div>
+                    <div class="input-bar">
+                        <input placeholder="درباره پیشنهادات سوال بپرسید...">
+                        <button class="send-btn">ارسال</button>
+                    </div>
+                </div>
+                <div class="frame-label">نتیجه: سبد محصول پیشنهادی</div>
+            </div>
+
+            <!-- Frame 5: Chat -->
+            <div class="frame-wrapper">
+                <div class="phone">
+                    <div class="header">
+                        <div class="header-left">
+                            <div class="header-btn">🕐</div>
+                            <div class="header-btn">＋</div>
+                            <div>
+                                <div class="header-title">نوابات</div>
+                                <div class="header-sub">بهترین ابزارها را برای کسب‌وکارتان پیدا کنید</div>
+                            </div>
+                        </div>
+                        <div class="close-btn">✕</div>
+                    </div>
+                    <div class="body">
+                        <div class="basket-header">
+                            <div class="basket-title">پکیج بهینه بررسی کد</div>
+                            <div class="basket-desc">ابزارهای مناسب انتخاب شدند.</div>
+                        </div>
+
+                        <div class="product-card featured" style="padding:12px;">
+                            <div class="featured-badge">پیشنهاد ویژه</div>
+                            <div class="product-name" style="font-size:15px;">TaskFlow Pro</div>
+                            <div class="product-role">ابزار اصلی</div>
+                        </div>
+
+                        <div class="msg user">درباره TaskFlow Pro بیشتر توضیح بده</div>
+
+                        <div class="msg ai">
+                            <strong>TaskFlow Pro</strong> یک ابزار مدیریت پروژه قدرتمند است:<br><br>
+                            • <strong>اولویت‌بندی هوشمند</strong> وظایف<br>
+                            • <strong>نمودار گانت</strong> و تخته کانبان<br>
+                            • <strong>ردیابی زمان</strong> و گزارش‌ها<br><br>
+                            قیمت: از <strong>۱۰ دلار/ماه</strong>
+                        </div>
+
+                        <div class="msg user">آیا برای تیم کوچک مناسبه؟</div>
+
+                        <div class="msg ai">
+                            بله! ویژگی <strong>رایگان</strong> آن تا ۱۰ کاربر را پشتیبانی می‌کند.
+                        </div>
+                    </div>
+                    <div class="input-bar">
+                        <input placeholder="درباره پیشنهادات سوال بپرسید...">
+                        <button class="send-btn">ارسال</button>
+                    </div>
+                </div>
+                <div class="frame-label">گفتگوی هوشمند با کاربر</div>
             </div>
 
         </div>
