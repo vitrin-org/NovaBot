@@ -43,12 +43,14 @@
             cursor: pointer;
             background: none;
             border: none;
-            font-size: 16px;
         }
         .header-btn:hover { background: #f3f4f6; color: #6b7280; }
+        .header-btn svg { width: 20px; height: 20px; }
+        .header-btn.active { color: #2563eb; background: #eff6ff; }
         .header-title { font-size: 14px; font-weight: 600; color: #111827; }
         .header-sub { font-size: 11px; color: #9ca3af; }
-        .close-btn { color: #9ca3af; background: none; border: none; cursor: pointer; font-size: 18px; }
+        .close-btn { color: #9ca3af; background: none; border: none; cursor: pointer; }
+        .close-btn svg { width: 20px; height: 20px; }
 
         /* Body */
         .body { flex: 1; overflow-y: auto; padding: 16px; display: flex; flex-direction: column; gap: 12px; }
@@ -246,14 +248,20 @@
                 <div class="phone">
                     <div class="header">
                         <div class="header-left">
-                            <div class="header-btn" style="font-size:14px;">🕐</div>
-                            <div class="header-btn" style="font-size:16px;">＋</div>
+                            <div class="header-btn active">
+                                <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                            </div>
+                            <div class="header-btn">
+                                <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+                            </div>
                             <div>
                                 <div class="header-title">نوابات</div>
                                 <div class="header-sub">بهترین ابزارها را برای کسب‌وکارتان پیدا کنید</div>
                             </div>
                         </div>
-                        <div class="close-btn">✕</div>
+                        <div class="close-btn">
+                            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+                        </div>
                     </div>
                     <div class="body">
                         <div class="quiz-label">حوزه کاری شما چیست؟</div>
@@ -277,14 +285,20 @@
                 <div class="phone">
                     <div class="header">
                         <div class="header-left">
-                            <div class="header-btn">🕐</div>
-                            <div class="header-btn">＋</div>
+                            <div class="header-btn">
+                                <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                            </div>
+                            <div class="header-btn">
+                                <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+                            </div>
                             <div>
                                 <div class="header-title">نوابات</div>
                                 <div class="header-sub">بهترین ابزارها را برای کسب‌وکارتان پیدا کنید</div>
                             </div>
                         </div>
-                        <div class="close-btn">✕</div>
+                        <div class="close-btn">
+                            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+                        </div>
                     </div>
                     <div class="body">
                         <div class="quiz-label">چالش اصلی شما چیست؟</div>
@@ -300,14 +314,20 @@
                 <div class="phone">
                     <div class="header">
                         <div class="header-left">
-                            <div class="header-btn">🕐</div>
-                            <div class="header-btn">＋</div>
+                            <div class="header-btn">
+                                <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                            </div>
+                            <div class="header-btn">
+                                <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+                            </div>
                             <div>
                                 <div class="header-title">نوابات</div>
                                 <div class="header-sub">بهترین ابزارها را برای کسب‌وکارتان پیدا کنید</div>
                             </div>
                         </div>
-                        <div class="close-btn">✕</div>
+                        <div class="close-btn">
+                            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+                        </div>
                     </div>
                     <div class="body">
                         <div class="quiz-label">محدوده بودجه شما چقدر است؟</div>
@@ -329,14 +349,20 @@
                 <div class="phone">
                     <div class="header">
                         <div class="header-left">
-                            <div class="header-btn">🕐</div>
-                            <div class="header-btn">＋</div>
+                            <div class="header-btn">
+                                <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                            </div>
+                            <div class="header-btn">
+                                <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+                            </div>
                             <div>
                                 <div class="header-title">نوابات</div>
                                 <div class="header-sub">بهترین ابزارها را برای کسب‌وکارتان پیدا کنید</div>
                             </div>
                         </div>
-                        <div class="close-btn">✕</div>
+                        <div class="close-btn">
+                            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+                        </div>
                     </div>
                     <div class="body">
                         <div class="basket-header">
@@ -397,7 +423,9 @@
                                 <div class="header-sub">بهترین ابزارها را برای کسب‌وکارتان پیدا کنید</div>
                             </div>
                         </div>
-                        <div class="close-btn">✕</div>
+                        <div class="close-btn">
+                            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+                        </div>
                     </div>
                     <div class="history-panel">
                         <div class="history-label">تاریخچه گفتگوها</div>
@@ -446,14 +474,20 @@
                 <div class="phone">
                     <div class="header">
                         <div class="header-left">
-                            <div class="header-btn">🕐</div>
-                            <div class="header-btn">＋</div>
+                            <div class="header-btn">
+                                <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                            </div>
+                            <div class="header-btn">
+                                <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+                            </div>
                             <div>
                                 <div class="header-title">نوابات</div>
                                 <div class="header-sub">بهترین ابزارها را برای کسب‌وکارتان پیدا کنید</div>
                             </div>
                         </div>
-                        <div class="close-btn">✕</div>
+                        <div class="close-btn">
+                            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+                        </div>
                     </div>
                     <div class="body">
                         <div class="basket-header">
