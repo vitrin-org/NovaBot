@@ -201,6 +201,29 @@
             cursor: pointer;
         }
 
+        /* History Panel */
+        .history-panel {
+            background: #f9fafb;
+            border-bottom: 1px solid #f3f4f6;
+            padding: 12px;
+        }
+        .history-label { font-size: 11px; font-weight: 600; color: #9ca3af; margin-bottom: 8px; }
+        .history-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 8px 12px;
+            border-radius: 8px;
+            margin-bottom: 4px;
+            cursor: pointer;
+            font-size: 13px;
+        }
+        .history-item.active { background: #eff6ff; color: #1d4ed8; font-weight: 600; }
+        .history-item.normal { background: white; color: #374151; }
+        .history-item.normal:hover { background: #f3f4f6; }
+        .history-delete { color: #9ca3af; background: none; border: none; cursor: pointer; font-size: 14px; margin-right: 8px; }
+        .history-delete:hover { color: #ef4444; }
+
         .frame-label {
             text-align: center;
             font-size: 12px;
@@ -362,7 +385,63 @@
                 <div class="frame-label">نتیجه: سبد محصول پیشنهادی</div>
             </div>
 
-            <!-- Frame 5: Chat -->
+            <!-- Frame 5: History Panel -->
+            <div class="frame-wrapper">
+                <div class="phone">
+                    <div class="header">
+                        <div class="header-left">
+                            <div class="header-btn" style="color:#2563eb; background:#eff6ff;">🕐</div>
+                            <div class="header-btn">＋</div>
+                            <div>
+                                <div class="header-title">نوابات</div>
+                                <div class="header-sub">بهترین ابزارها را برای کسب‌وکارتان پیدا کنید</div>
+                            </div>
+                        </div>
+                        <div class="close-btn">✕</div>
+                    </div>
+                    <div class="history-panel">
+                        <div class="history-label">تاریخچه گفتگوها</div>
+                        <div class="history-item active">
+                            <span>پکیج بهینه بررسی کد</span>
+                        </div>
+                        <div class="history-item normal">
+                            <span>ابزار بازاریابی محتوا</span>
+                            <button class="history-delete">✕</button>
+                        </div>
+                        <div class="history-item normal">
+                            <span>چت درباره TaskFlow Pro</span>
+                            <button class="history-delete">✕</button>
+                        </div>
+                        <div class="history-item normal">
+                            <span>پکیج مدیریت پروژه</span>
+                            <button class="history-delete">✕</button>
+                        </div>
+                        <div class="history-item normal">
+                            <span>مشاوره ابزار فروشگاهی</span>
+                            <button class="history-delete">✕</button>
+                        </div>
+                    </div>
+                    <div class="body">
+                        <div class="basket-header">
+                            <div class="basket-title">پکیج بهینه بررسی کد</div>
+                            <div class="basket-desc">ابزارهای مناسب انتخاب شدند.</div>
+                        </div>
+
+                        <div class="product-card featured" style="padding:12px;">
+                            <div class="featured-badge">پیشنهاد ویژه</div>
+                            <div class="product-name" style="font-size:15px;">TaskFlow Pro</div>
+                            <div class="product-role">ابزار اصلی</div>
+                        </div>
+                    </div>
+                    <div class="input-bar">
+                        <input placeholder="درباره پیشنهادات سوال بپرسید...">
+                        <button class="send-btn">ارسال</button>
+                    </div>
+                </div>
+                <div class="frame-label">تاریخچه گفتگوها (۵ مورد اخیر)</div>
+            </div>
+
+            <!-- Frame 6: Chat -->
             <div class="frame-wrapper">
                 <div class="phone">
                     <div class="header">
