@@ -1,4 +1,4 @@
-# DigiYaar (دیجییار)
+# NovaBot (نوابات)
 
 AI-powered chatbot and recommendation engine for discovering digital tools and startups.
 

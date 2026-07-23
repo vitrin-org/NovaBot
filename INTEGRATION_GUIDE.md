@@ -1,15 +1,15 @@
-# راهنمای اتصال چت‌بات DigiYaar به سایت واقعی
+# راهنمای اتصال چت‌بات NovaBot به سایت واقعی
 
 ## خلاصه
 
-این سند توضیح می‌دهد چطور چت‌بات هوشمند DigiYaar را به سایت واقعی خود متصل کنید و به جای داده‌های نمونه، از API واقعی محصولات استفاده کنید.
+این سند توضیح می‌دهد چطور چت‌بات هوشمند NovaBot را به سایت واقعی خود متصل کنید و به جای داده‌های نمونه، از API واقعی محصولات استفاده کنید.
 
 ---
 
 ## ۱. ساختار پروژه
 
 ```
-productplus-bot/
+novabot/
 ├── backend/                    # سرور FastAPI
 │   ├── app/
 │   │   ├── main.py            # نقطه ورود API
@@ -280,7 +280,7 @@ server {
 
     # فرانت‌اند
     location / {
-        root /var/www/productplus-frontend;
+        root /var/www/novabot-frontend;
         try_files $uri $uri/ /index.html;
     }
 
@@ -347,7 +347,7 @@ GET /
 Response:
 {
   "status": "ok",
-  "service": "Product Plus AI"
+  "service": "NovaBot AI"
 }
 ```
 

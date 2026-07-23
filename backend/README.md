@@ -1,4 +1,4 @@
-# DigiYaar - Backend
+# NovaBot - Backend
 
 FastAPI backend with hybrid recommendation engine and conversational AI.
 
