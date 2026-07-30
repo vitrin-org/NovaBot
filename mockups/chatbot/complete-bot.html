@@ -1,0 +1,1401 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تکی‌بات - چت‌بات فروشگاه تکنولوژی</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1e3a5f 0%, #0f172a 100%);
+            min-height: 100vh;
+            direction: rtl;
+        }
+
+        /* Background Demo Content */
+        .demo-bg {
+            padding: 40px 20px;
+            text-align: center;
+            color: white;
+        }
+
+        .demo-bg h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .demo-bg p {
+            opacity: 0.8;
+            font-size: 1.1rem;
+        }
+
+        /* Chat Button */
+        .chat-button {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            width: 64px;
+            height: 64px;
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 20px rgba(59, 130, 246, 0.5);
+            transition: all 0.3s;
+            z-index: 1000;
+        }
+
+        .chat-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 30px rgba(59, 130, 246, 0.6);
+        }
+
+        .chat-button svg {
+            width: 28px;
+            height: 28px;
+            fill: white;
+        }
+
+        /* Chat Window */
+        .chat-window {
+            position: fixed;
+            bottom: 100px;
+            right: 24px;
+            width: 400px;
+            height: 600px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 50px rgba(0, 0, 0, 0.3);
+            display: none;
+            flex-direction: column;
+            overflow: hidden;
+            z-index: 999;
+            animation: slideUp 0.3s ease;
+        }
+
+        .chat-window.active {
+            display: flex;
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Header */
+        .chat-header {
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+            color: white;
+            padding: 18px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .chat-header-info {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .chat-avatar {
+            width: 44px;
+            height: 44px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+        }
+
+        .chat-header-text h3 {
+            font-size: 1.05rem;
+            margin-bottom: 3px;
+        }
+
+        .chat-header-text span {
+            font-size: 0.8rem;
+            opacity: 0.9;
+        }
+
+        .chat-close {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 4px 8px;
+            border-radius: 8px;
+            transition: background 0.2s;
+        }
+
+        .chat-close:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        /* Screen Container */
+        .screen-container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .screen {
+            display: none;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .screen.active {
+            display: flex;
+        }
+
+        /* Welcome Screen */
+        .welcome-screen {
+            padding: 24px 20px;
+            text-align: center;
+        }
+
+        .welcome-icon {
+            font-size: 4rem;
+            margin-bottom: 16px;
+        }
+
+        .welcome-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #1f2937;
+            margin-bottom: 8px;
+        }
+
+        .welcome-desc {
+            color: #6b7280;
+            font-size: 0.95rem;
+            margin-bottom: 24px;
+            line-height: 1.6;
+        }
+
+        .start-btn {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+            border: none;
+            border-radius: 12px;
+            color: white;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .start-btn:hover {
+            transform: scale(1.02);
+        }
+
+        .skip-link {
+            display: block;
+            margin-top: 12px;
+            color: #6b7280;
+            font-size: 0.85rem;
+            cursor: pointer;
+            text-decoration: underline;
+        }
+
+        /* Onboarding Screen */
+        .onboarding-screen {
+            padding: 20px;
+        }
+
+        .progress-bar {
+            display: flex;
+            gap: 6px;
+            margin-bottom: 24px;
+        }
+
+        .progress-step {
+            flex: 1;
+            height: 4px;
+            background: #e5e7eb;
+            border-radius: 2px;
+            transition: background 0.3s;
+        }
+
+        .progress-step.active {
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+        }
+
+        .onboarding-question {
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: #1f2937;
+            margin-bottom: 6px;
+        }
+
+        .onboarding-hint {
+            font-size: 0.85rem;
+            color: #6b7280;
+            margin-bottom: 20px;
+        }
+
+        .options-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            flex: 1;
+            overflow-y: auto;
+        }
+
+        .option-card {
+            padding: 14px 16px;
+            background: #f9fafb;
+            border: 2px solid #e5e7eb;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-align: right;
+        }
+
+        .option-card:hover {
+            border-color: #3b82f6;
+            background: #eff6ff;
+        }
+
+        .option-card.selected {
+            border-color: #3b82f6;
+            background: #eff6ff;
+        }
+
+        .option-icon {
+            font-size: 1.5rem;
+            margin-bottom: 6px;
+        }
+
+        .option-title {
+            font-weight: 500;
+            color: #1f2937;
+            margin-bottom: 2px;
+        }
+
+        .option-desc {
+            font-size: 0.8rem;
+            color: #6b7280;
+        }
+
+        .onboarding-nav {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .btn-back {
+            padding: 12px 20px;
+            background: #f3f4f6;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            color: #6b7280;
+        }
+
+        .btn-next {
+            flex: 1;
+            padding: 12px 20px;
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            color: white;
+            font-weight: 500;
+        }
+
+        .btn-next:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        /* Chat Screen */
+        .chat-screen {
+            display: none;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .chat-screen.active {
+            display: flex;
+        }
+
+        .messages-area {
+            flex: 1;
+            overflow-y: auto;
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .message {
+            max-width: 85%;
+            padding: 12px 16px;
+            border-radius: 16px;
+            line-height: 1.5;
+            font-size: 0.9rem;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .message-bot {
+            background: #f3f4f6;
+            color: #1f2937;
+            align-self: flex-start;
+            border-bottom-right-radius: 4px;
+        }
+
+        .message-user {
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+            color: white;
+            align-self: flex-end;
+            border-bottom-left-radius: 4px;
+        }
+
+        .message-time {
+            font-size: 0.7rem;
+            color: #9ca3af;
+            margin-top: 4px;
+        }
+
+        /* Typing Indicator */
+        .typing-indicator {
+            display: none;
+            gap: 4px;
+            padding: 12px 16px;
+            background: #f3f4f6;
+            border-radius: 16px;
+            align-self: flex-start;
+            width: fit-content;
+        }
+
+        .typing-indicator.active {
+            display: flex;
+        }
+
+        .typing-dot {
+            width: 8px;
+            height: 8px;
+            background: #9ca3af;
+            border-radius: 50%;
+            animation: typing 1.4s infinite ease-in-out;
+        }
+
+        .typing-dot:nth-child(2) { animation-delay: 0.2s; }
+        .typing-dot:nth-child(3) { animation-delay: 0.4s; }
+
+        @keyframes typing {
+            0%, 60%, 100% { transform: translateY(0); }
+            30% { transform: translateY(-6px); }
+        }
+
+        /* Quick Replies */
+        .quick-replies {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            padding: 0 16px 12px;
+        }
+
+        .quick-reply {
+            padding: 8px 14px;
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            color: #374151;
+        }
+
+        .quick-reply:hover {
+            background: #3b82f6;
+            color: white;
+            border-color: #3b82f6;
+        }
+
+        /* Chat Input */
+        .chat-input {
+            padding: 12px 16px;
+            border-top: 1px solid #e5e7eb;
+            display: flex;
+            gap: 10px;
+            background: white;
+        }
+
+        .chat-input input {
+            flex: 1;
+            padding: 12px 16px;
+            border: 1px solid #e5e7eb;
+            border-radius: 24px;
+            font-size: 0.9rem;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .chat-input input:focus {
+            border-color: #3b82f6;
+        }
+
+        .send-btn {
+            width: 44px;
+            height: 44px;
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.2s;
+        }
+
+        .send-btn:hover {
+            transform: scale(1.05);
+        }
+
+        .send-btn svg {
+            width: 20px;
+            height: 20px;
+            fill: white;
+        }
+
+        /* Product Card */
+        .product-card {
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 14px;
+            padding: 16px;
+            margin: 8px 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .product-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 10px;
+        }
+
+        .product-name {
+            font-weight: 600;
+            color: #1f2937;
+            font-size: 1rem;
+        }
+
+        .product-badge {
+            padding: 4px 10px;
+            background: #dcfce7;
+            color: #16a34a;
+            border-radius: 6px;
+            font-size: 0.7rem;
+            font-weight: 500;
+        }
+
+        .product-badge.hot {
+            background: #fef2f2;
+            color: #dc2626;
+        }
+
+        .product-specs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-bottom: 10px;
+        }
+
+        .spec-tag {
+            padding: 3px 8px;
+            background: #f3f4f6;
+            border-radius: 4px;
+            font-size: 0.7rem;
+            color: #6b7280;
+        }
+
+        .product-desc {
+            font-size: 0.85rem;
+            color: #6b7280;
+            margin-bottom: 12px;
+            line-height: 1.5;
+        }
+
+        .product-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .product-price {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #3b82f6;
+        }
+
+        .product-old-price {
+            text-decoration: line-through;
+            color: #9ca3af;
+            font-size: 0.85rem;
+            font-weight: 400;
+            margin-left: 8px;
+        }
+
+        .product-actions {
+            display: flex;
+            gap: 8px;
+        }
+
+        .btn-compare {
+            padding: 8px 14px;
+            background: #f3f4f6;
+            border: none;
+            border-radius: 8px;
+            font-size: 0.8rem;
+            cursor: pointer;
+            color: #374151;
+        }
+
+        .btn-add {
+            padding: 8px 14px;
+            background: #3b82f6;
+            border: none;
+            border-radius: 8px;
+            font-size: 0.8rem;
+            cursor: pointer;
+            color: white;
+        }
+
+        /* Basket Card */
+        .basket-card {
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+            color: white;
+            border-radius: 14px;
+            padding: 16px;
+            margin: 8px 0;
+        }
+
+        .basket-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .basket-subtitle {
+            font-size: 0.8rem;
+            opacity: 0.9;
+            margin-bottom: 14px;
+        }
+
+        .basket-items {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-bottom: 14px;
+        }
+
+        .basket-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(255,255,255,0.15);
+            padding: 10px 12px;
+            border-radius: 10px;
+        }
+
+        .basket-item-icon {
+            font-size: 1.3rem;
+        }
+
+        .basket-item-info {
+            flex: 1;
+        }
+
+        .basket-item-name {
+            font-weight: 500;
+            font-size: 0.85rem;
+        }
+
+        .basket-item-spec {
+            font-size: 0.7rem;
+            opacity: 0.85;
+        }
+
+        .basket-item-price {
+            font-weight: 600;
+            font-size: 0.85rem;
+        }
+
+        .basket-total {
+            display: flex;
+            justify-content: space-between;
+            padding-top: 12px;
+            border-top: 1px solid rgba(255,255,255,0.3);
+            margin-bottom: 14px;
+        }
+
+        .basket-total-label {
+            font-size: 0.9rem;
+        }
+
+        .basket-total-price {
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+
+        .basket-discount {
+            display: flex;
+            justify-content: space-between;
+            color: #bbf7d0;
+            font-size: 0.85rem;
+            margin-bottom: 12px;
+        }
+
+        .basket-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn-checkout {
+            flex: 2;
+            padding: 12px;
+            background: white;
+            border: none;
+            border-radius: 10px;
+            color: #3b82f6;
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+        }
+
+        .btn-edit-basket {
+            flex: 1;
+            padding: 12px;
+            background: rgba(255,255,255,0.2);
+            border: 1px solid rgba(255,255,255,0.4);
+            border-radius: 10px;
+            color: white;
+            font-size: 0.85rem;
+            cursor: pointer;
+        }
+
+        /* Comparison Table */
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.8rem;
+            margin: 8px 0;
+        }
+
+        .comparison-table th {
+            background: #f3f4f6;
+            padding: 10px;
+            text-align: right;
+            font-weight: 500;
+            color: #374151;
+        }
+
+        .comparison-table td {
+            padding: 10px;
+            border-bottom: 1px solid #e5e7eb;
+            color: #6b7280;
+        }
+
+        .comparison-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .winner {
+            color: #16a34a;
+            font-weight: 600;
+        }
+
+        /* Responsive */
+        @media (max-width: 480px) {
+            .chat-window {
+                width: calc(100% - 16px);
+                right: 8px;
+                bottom: 80px;
+                height: calc(100vh - 90px);
+                border-radius: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Background Content -->
+    <div class="demo-bg">
+        <h1>فروشگاه تکنولوژی</h1>
+        <p>بهترین گوشی‌ها، لپ‌تاپ‌ها و لوازم جانبی</p>
+    </div>
+
+    <!-- Chat Button -->
+    <div class="chat-button" id="chatBtn" onclick="toggleChat()">
+        <svg viewBox="0 0 24 24" id="chatIcon">
+            <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H6l-2 2V4h16v12z"/>
+        </svg>
+    </div>
+
+    <!-- Chat Window -->
+    <div class="chat-window" id="chatWindow">
+        <!-- Header -->
+        <div class="chat-header">
+            <div class="chat-header-info">
+                <div class="chat-avatar">📱</div>
+                <div class="chat-header-text">
+                    <h3>تکی‌بات</h3>
+                    <span id="statusText">آنلاین</span>
+                </div>
+            </div>
+            <button class="chat-close" onclick="toggleChat()">✕</button>
+        </div>
+
+        <div class="screen-container">
+            <!-- Screen 1: Welcome -->
+            <div class="screen active" id="welcomeScreen">
+                <div class="welcome-screen">
+                    <div class="welcome-icon">🤖</div>
+                    <div class="welcome-title">سلام! خوش اومدید 👋</div>
+                    <div class="welcome-desc">
+                        من تکی‌بات هستم، دستیار هوشمند شما برای انتخاب بهترین تکنولوژی.
+                        <br>با چند سؤال ساده، بهترین محصول رو بهتون پیشنهاد میدم.
+                    </div>
+                    <button class="start-btn" onclick="startOnboarding()">شروع کنید</button>
+                    <span class="skip-link" onclick="skipToChat()">رد شدن از ثبت‌نام</span>
+                </div>
+            </div>
+
+            <!-- Screen 2: Onboarding -->
+            <div class="screen" id="onboardingScreen">
+                <div class="onboarding-screen">
+                    <div class="progress-bar">
+                        <div class="progress-step active" id="step1"></div>
+                        <div class="progress-step" id="step2"></div>
+                        <div class="progress-step" id="step3"></div>
+                    </div>
+
+                    <!-- Step 1 -->
+                    <div id="onboardStep1">
+                        <div class="onboarding-question">دنبال چه محصولی هستید؟</div>
+                        <div class="onboarding-hint">انتخاب کنید تا بهترین پیشنهادات رو ببینید</div>
+                        <div class="options-grid">
+                            <div class="option-card" onclick="selectOption(this, 'product')" data-value="phone">
+                                <div class="option-icon">📱</div>
+                                <div class="option-title">گوشی موبایل</div>
+                                <div class="option-desc">آیفون، سامسونگ، شیائومی</div>
+                            </div>
+                            <div class="option-card" onclick="selectOption(this, 'product')" data-value="laptop">
+                                <div class="option-icon">💻</div>
+                                <div class="option-title">لپ‌تاپ</div>
+                                <div class="option-desc">مک‌بوک، گیمینگ، اداری</div>
+                            </div>
+                            <div class="option-card" onclick="selectOption(this, 'product')" data-value="tablet">
+                                <div class="option-icon">📟</div>
+                                <div class="option-title">تبلت</div>
+                                <div class="option-desc">آیپد، تبلت اندرویدی</div>
+                            </div>
+                            <div class="option-card" onclick="selectOption(this, 'product')" data-value="accessory">
+                                <div class="option-icon">🎧</div>
+                                <div class="option-title">لوازم جانبی</div>
+                                <div class="option-desc">هدفون، ساعت هوشمند، لوازم</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 2 -->
+                    <div id="onboardStep2" style="display: none;">
+                        <div class="onboarding-question">بودجه شما چقدره؟</div>
+                        <div class="onboarding-hint">محدوده قیمت مورد نظرتون رو انتخاب کنید</div>
+                        <div class="options-grid">
+                            <div class="option-card" onclick="selectOption(this, 'budget')" data-value="low">
+                                <div class="option-title">زیر ۱۰ میلیون</div>
+                                <div class="option-desc">اقتصادی و مقرون‌به‌صرفه</div>
+                            </div>
+                            <div class="option-card" onclick="selectOption(this, 'budget')" data-value="mid">
+                                <div class="option-title">۱۰ تا ۳۰ میلیون</div>
+                                <div class="option-desc">میان‌رده و محبوب</div>
+                            </div>
+                            <div class="option-card" onclick="selectOption(this, 'budget')" data-value="high">
+                                <div class="option-title">۳۰ تا ۶۰ میلیون</div>
+                                <div class="option-desc">بالا‌رده و حرفه‌ای</div>
+                            </div>
+                            <div class="option-card" onclick="selectOption(this, 'budget')" data-value="premium">
+                                <div class="option-title">بالای ۶۰ میلیون</div>
+                                <div class="option-desc">پریمیوم و لاکچری</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 3 -->
+                    <div id="onboardStep3" style="display: none;">
+                        <div class="onboarding-question">اولویت شما چیه؟</div>
+                        <div class="onboarding-hint">مهم‌ترین ویژگی برای شما کدومه؟</div>
+                        <div class="options-grid">
+                            <div class="option-card" onclick="selectOption(this, 'priority')" data-value="camera">
+                                <div class="option-icon">📷</div>
+                                <div class="option-title">کیفیت دوربین</div>
+                                <div class="option-desc">عکاسی و فیلمبرداری حرفه‌ای</div>
+                            </div>
+                            <div class="option-card" onclick="selectOption(this, 'priority')" data-value="performance">
+                                <div class="option-icon">⚡</div>
+                                <div class="option-title">سرعت و عملکرد</div>
+                                <div class="option-desc">گیمینگ و پردازش سنگین</div>
+                            </div>
+                            <div class="option-card" onclick="selectOption(this, 'priority')" data-value="battery">
+                                <div class="option-icon">🔋</div>
+                                <div class="option-title">عمر باتری</div>
+                                <div class="option-desc">استفاده طولانی بدون شارژ</div>
+                            </div>
+                            <div class="option-card" onclick="selectOption(this, 'priority')" data-value="design">
+                                <div class="option-icon">✨</div>
+                                <div class="option-title">طراحی و ظاهر</div>
+                                <div class="option-desc">شیک و مدرن</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="onboarding-nav">
+                        <button class="btn-back" id="backBtn" onclick="prevStep()" style="display: none;">بازگشت</button>
+                        <button class="btn-next" id="nextBtn" onclick="nextStep()" disabled>مرحله بعد</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Screen 3: Chat -->
+            <div class="chat-screen" id="chatScreen">
+                <div class="messages-area" id="messagesArea">
+                    <!-- Messages will be added here -->
+                </div>
+
+                <div class="typing-indicator" id="typingIndicator">
+                    <div class="typing-dot"></div>
+                    <div class="typing-dot"></div>
+                    <div class="typing-dot"></div>
+                </div>
+
+                <div class="quick-replies" id="quickReplies">
+                    <!-- Quick replies will be added here -->
+                </div>
+
+                <div class="chat-input">
+                    <input type="text" id="userInput" placeholder="پیام خود را بنویسید..." onkeypress="handleKeyPress(event)">
+                    <button class="send-btn" onclick="sendMessage()">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // State
+        let currentStep = 1;
+        let selections = {
+            product: null,
+            budget: null,
+            priority: null
+        };
+
+        // Toggle Chat
+        function toggleChat() {
+            const chatWindow = document.getElementById('chatWindow');
+            chatWindow.classList.toggle('active');
+        }
+
+        // Start Onboarding
+        function startOnboarding() {
+            showScreen('onboardingScreen');
+        }
+
+        // Skip to Chat
+        function skipToChat() {
+            showScreen('chatScreen');
+            initChat();
+        }
+
+        // Show Screen
+        function showScreen(screenId) {
+            document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+            document.getElementById(screenId).classList.add('active');
+        }
+
+        // Select Option
+        function selectOption(el, type) {
+            document.querySelectorAll(`[onclick*="${type}"]`).forEach(opt => {
+                opt.classList.remove('selected');
+            });
+            el.classList.add('selected');
+            selections[type] = el.dataset.value;
+            document.getElementById('nextBtn').disabled = false;
+        }
+
+        // Next Step
+        function nextStep() {
+            if (currentStep < 3) {
+                document.getElementById(`onboardStep${currentStep}`).style.display = 'none';
+                currentStep++;
+                document.getElementById(`onboardStep${currentStep}`).style.display = 'block';
+                document.getElementById(`step${currentStep}`).classList.add('active');
+                document.getElementById('backBtn').style.display = currentStep > 1 ? 'block' : 'none';
+                document.getElementById('nextBtn').textContent = currentStep === 3 ? 'پایان' : 'مرحله بعد';
+                document.getElementById('nextBtn').disabled = true;
+
+                if (currentStep === 3) {
+                    document.getElementById('nextBtn').onclick = finishOnboarding;
+                }
+            }
+        }
+
+        // Previous Step
+        function prevStep() {
+            if (currentStep > 1) {
+                document.getElementById(`onboardStep${currentStep}`).style.display = 'none';
+                currentStep--;
+                document.getElementById(`onboardStep${currentStep}`).style.display = 'block';
+                document.getElementById(`step${currentStep + 1}`).classList.remove('active');
+                document.getElementById('backBtn').style.display = currentStep > 1 ? 'block' : 'none';
+                document.getElementById('nextBtn').textContent = 'مرحله بعد';
+                document.getElementById('nextBtn').onclick = nextStep;
+                document.getElementById('nextBtn').disabled = false;
+            }
+        }
+
+        // Finish Onboarding
+        function finishOnboarding() {
+            showScreen('chatScreen');
+            initChat();
+        }
+
+        // Initialize Chat
+        function initChat() {
+            const productNames = {
+                phone: 'گوشی موبایل',
+                laptop: 'لپ‌تاپ',
+                tablet: 'تبلت',
+                accessory: 'لوازم جانبی'
+            };
+
+            const budgetNames = {
+                low: 'زیر ۱۰ میلیون',
+                mid: '۱۰ تا ۳۰ میلیون',
+                high: '۳۰ تا ۶۰ میلیون',
+                premium: 'بالای ۶۰ میلیون'
+            };
+
+            let greeting = 'سلام! 👋';
+            let context = '';
+
+            if (selections.product) {
+                context = `می‌دونم دنبال ${productNames[selections.product] || 'محصول'} هستید`;
+                if (selections.budget) {
+                    context += ` با بودجه ${budgetNames[selections.budget] || ''}`;
+                }
+                context += '. ';
+            }
+
+            setTimeout(() => {
+                addBotMessage(greeting + ' به تکی‌بات خوش اومدید!');
+                setTimeout(() => {
+                    if (context) {
+                        addBotMessage(context + 'بذارید چند تا پیشنهاد عالی بهتون بدم:');
+                        setTimeout(() => showRecommendations(), 1000);
+                    } else {
+                        addBotMessage('چطور می‌تونم کمکتون کنم؟ دنبال چه محصولی هستید؟');
+                        addQuickReplies(['📱 گوشی', '💻 لپ‌تاپ', '📟 تبلت', '🎧 لوازم جانبی']);
+                    }
+                }, 800);
+            }, 500);
+        }
+
+        // Add Bot Message
+        function addBotMessage(text) {
+            const messagesArea = document.getElementById('messagesArea');
+            const time = new Date().toLocaleTimeString('fa-IR', { hour: '2-digit', minute: '2-digit' });
+
+            const msgDiv = document.createElement('div');
+            msgDiv.className = 'message message-bot';
+            msgDiv.textContent = text;
+            messagesArea.appendChild(msgDiv);
+
+            const timeDiv = document.createElement('div');
+            timeDiv.className = 'message-time';
+            timeDiv.style.alignSelf = 'flex-start';
+            timeDiv.textContent = time;
+            messagesArea.appendChild(timeDiv);
+
+            scrollToBottom();
+        }
+
+        // Add User Message
+        function addUserMessage(text) {
+            const messagesArea = document.getElementById('messagesArea');
+            const time = new Date().toLocaleTimeString('fa-IR', { hour: '2-digit', minute: '2-digit' });
+
+            const msgDiv = document.createElement('div');
+            msgDiv.className = 'message message-user';
+            msgDiv.textContent = text;
+            messagesArea.appendChild(msgDiv);
+
+            const timeDiv = document.createElement('div');
+            timeDiv.className = 'message-time';
+            timeDiv.style.alignSelf = 'flex-end';
+            timeDiv.textContent = time;
+            messagesArea.appendChild(timeDiv);
+
+            scrollToBottom();
+        }
+
+        // Add Product Card
+        function addProductCard(product) {
+            const messagesArea = document.getElementById('messagesArea');
+            const card = document.createElement('div');
+            card.className = 'product-card';
+            card.innerHTML = `
+                <div class="product-header">
+                    <div class="product-name">${product.name}</div>
+                    <div class="product-badge ${product.badgeType || ''}">${product.badge}</div>
+                </div>
+                <div class="product-specs">
+                    ${product.specs.map(s => `<span class="spec-tag">${s}</span>`).join('')}
+                </div>
+                <div class="product-desc">${product.desc}</div>
+                <div class="product-footer">
+                    <div>
+                        <span class="product-price">${product.price}</span>
+                        ${product.oldPrice ? `<span class="product-old-price">${product.oldPrice}</span>` : ''}
+                    </div>
+                    <div class="product-actions">
+                        <button class="btn-compare">مقایسه</button>
+                        <button class="btn-add">خرید</button>
+                    </div>
+                </div>
+            `;
+            messagesArea.appendChild(card);
+            scrollToBottom();
+        }
+
+        // Add Basket Card
+        function addBasketCard(basket) {
+            const messagesArea = document.getElementById('messagesArea');
+            const card = document.createElement('div');
+            card.className = 'basket-card';
+            card.innerHTML = `
+                <div class="basket-title">${basket.title}</div>
+                <div class="basket-subtitle">${basket.subtitle}</div>
+                <div class="basket-items">
+                    ${basket.items.map(item => `
+                        <div class="basket-item">
+                            <div class="basket-item-icon">${item.icon}</div>
+                            <div class="basket-item-info">
+                                <div class="basket-item-name">${item.name}</div>
+                                <div class="basket-item-spec">${item.spec}</div>
+                            </div>
+                            <div class="basket-item-price">${item.price}</div>
+                        </div>
+                    `).join('')}
+                </div>
+                <div class="basket-discount">
+                    <span>تخفیف پکیج:</span>
+                    <span>${basket.discount}</span>
+                </div>
+                <div class="basket-total">
+                    <span class="basket-total-label">مجموع:</span>
+                    <span class="basket-total-price">${basket.total}</span>
+                </div>
+                <div class="basket-actions">
+                    <button class="btn-checkout">خرید پکیج</button>
+                    <button class="btn-edit-basket">تغییر</button>
+                </div>
+            `;
+            messagesArea.appendChild(card);
+            scrollToBottom();
+        }
+
+        // Add Comparison Table
+        function addComparisonTable() {
+            const messagesArea = document.getElementById('messagesArea');
+            const table = document.createElement('div');
+            table.className = 'product-card';
+            table.innerHTML = `
+                <div class="product-name" style="margin-bottom: 12px;">📊 مقایسه محصولات</div>
+                <table class="comparison-table">
+                    <tr>
+                        <th>ویژگی</th>
+                        <th>iPhone 15 Pro</th>
+                        <th>Galaxy S24</th>
+                    </tr>
+                    <tr>
+                        <td>دوربین</td>
+                        <td class="winner">48MP ⭐</td>
+                        <td>200MP</td>
+                    </tr>
+                    <tr>
+                        <td>باتری</td>
+                        <td>3279mAh</td>
+                        <td class="winner">4000mAh ⭐</td>
+                    </tr>
+                    <tr>
+                        <td>قیمت</td>
+                        <td class="winner">28.5M ⭐</td>
+                        <td>29.9M</td>
+                    </tr>
+                </table>
+            `;
+            messagesArea.appendChild(table);
+            scrollToBottom();
+        }
+
+        // Show Recommendations
+        function showRecommendations() {
+            const products = getProducts();
+            products.forEach((product, index) => {
+                setTimeout(() => addProductCard(product), index * 800);
+            });
+
+            setTimeout(() => {
+                addBotMessage('می‌خواید مقایسه کنید یا پکیج ویژه ببینید؟');
+                addQuickReplies(['📊 مقایسه', '🎁 پکیج تخفیفی', '🔄 گزینه دیگه']);
+            }, products.length * 800 + 500);
+        }
+
+        // Get Products Based on Selection
+        function getProducts() {
+            const allProducts = {
+                phone: [
+                    {
+                        name: 'iPhone 15 Pro',
+                        badge: 'محبوب',
+                        badgeType: '',
+                        specs: ['A17 Pro', '48MP Camera', 'Titanium'],
+                        desc: 'قدرتمندترین آیفون با دوربین حرفه‌ای و بدنه تیتانیومی',
+                        price: '۲۸,۵۰۰,۰۰۰',
+                        oldPrice: '۳۲,۰۰۰,۰۰۰'
+                    },
+                    {
+                        name: 'Samsung S24 Ultra',
+                        badge: 'پیشنهاد ویژه',
+                        badgeType: 'hot',
+                        specs: ['Snapdragon 8 Gen 3', '200MP', 'S-Pen'],
+                        desc: 'بهترین دوربین سامسونگ با هوش مصنوعی Galaxy AI',
+                        price: '۲۹,۹۰۰,۰۰۰',
+                        oldPrice: null
+                    }
+                ],
+                laptop: [
+                    {
+                        name: 'MacBook Pro M3',
+                        badge: 'حرفه‌ای',
+                        badgeType: '',
+                        specs: ['M3 Chip', '18GB RAM', '512GB SSD'],
+                        desc: 'قوی‌ترین مک‌بوک برای کارهای حرفه‌ای و تدوین',
+                        price: '۶۵,۰۰۰,۰۰۰',
+                        oldPrice: '۷۲,۰۰۰,۰۰۰'
+                    },
+                    {
+                        name: 'ASUS ROG Strix',
+                        badge: 'گیمینگ',
+                        badgeType: 'hot',
+                        specs: ['RTX 4070', '16GB RAM', '144Hz'],
+                        desc: 'لپ‌تاپ گیمینگ با کارت گرافیک قدرتمند',
+                        price: '۷۵,۰۰۰,۰۰۰',
+                        oldPrice: null
+                    }
+                ],
+                tablet: [
+                    {
+                        name: 'iPad Pro 12.9',
+                        badge: 'بهترین',
+                        badgeType: '',
+                        specs: ['M2 Chip', '256GB', 'Liquid Retina'],
+                        desc: 'تبلت حرفه‌ای اپل با نمایشگر خیره‌کننده',
+                        price: '۴۵,۰۰۰,۰۰۰',
+                        oldPrice: null
+                    }
+                ],
+                accessory: [
+                    {
+                        name: 'AirPods Pro 2',
+                        badge: 'محبوب‌ترین',
+                        badgeType: '',
+                        specs: ['ANC', 'USB-C', '6hr Battery'],
+                        desc: 'هدفون بی‌سیم اپل با حذف نویز فعال',
+                        price: '۸,۵۰۰,۰۰۰',
+                        oldPrice: '۹,۵۰۰,۰۰۰'
+                    },
+                    {
+                        name: 'Apple Watch Ultra',
+                        badge: 'ورزشی',
+                        badgeType: 'hot',
+                        specs: ['GPS', '100m Water', 'Titanium'],
+                        desc: 'ساعت هوشمند مقاوم برای ورزشکاران',
+                        price: '۱۸,۰۰۰,۰۰۰',
+                        oldPrice: null
+                    }
+                ]
+            };
+
+            return allProducts[selections.product] || allProducts.phone;
+        }
+
+        // Add Quick Replies
+        function addQuickReplies(replies) {
+            const container = document.getElementById('quickReplies');
+            container.innerHTML = '';
+            replies.forEach(reply => {
+                const btn = document.createElement('button');
+                btn.className = 'quick-reply';
+                btn.textContent = reply;
+                btn.onclick = () => handleQuickReply(reply);
+                container.appendChild(btn);
+            });
+        }
+
+        // Handle Quick Reply
+        function handleQuickReply(reply) {
+            addUserMessage(reply);
+            document.getElementById('quickReplies').innerHTML = '';
+
+            showTyping();
+
+            setTimeout(() => {
+                hideTyping();
+
+                if (reply.includes('مقایسه')) {
+                    addBotMessage('در اینجا مقایسه دو محصول محبوب رو می‌بینید:');
+                    addComparisonTable();
+                    addQuickReplies(['🎁 پکیج تخفیفی', '🔄 محصول دیگه']);
+                } else if (reply.includes('پکیج')) {
+                    addBotMessage('پکیج ویژه آماده شد! 🎁 با خرید پکیج ۱۵٪ تخفیف بگیرید:');
+                    addBasketCard({
+                        title: '🎁 پکیج موبایل حرفه‌ای',
+                        subtitle: 'گوشی + لوازم جانبی',
+                        items: [
+                            { icon: '📱', name: 'iPhone 15 Pro', spec: '256GB', price: '28.5M' },
+                            { icon: '🎧', name: 'AirPods Pro 2', spec: 'ANC', price: '8.5M' },
+                            { icon: '⌚', name: 'Apple Watch SE', spec: 'GPS', price: '12M' }
+                        ],
+                        discount: '- 7,350,000 تومان',
+                        total: '۴۱,۶۵۰,۰۰۰ تومان'
+                    });
+                    addQuickReplies(['🛒 خرید پکیج', '🔄 تغییر محصولات']);
+                } else if (reply.includes('گزینه دیگه') || reply.includes('محصول دیگه')) {
+                    addBotMessage('چه نوع محصولی مد نظرتونه؟');
+                    addQuickReplies(['📱 گوشی', '💻 لپ‌تاپ', '📟 تبلت', '🎧 لوازم جانبی']);
+                } else if (reply.includes('گوشی')) {
+                    selections.product = 'phone';
+                    addBotMessage('عالیه! چند تا گوشی محبوب بهتون پیشنهاد میدم:');
+                    showRecommendations();
+                } else if (reply.includes('لپ‌تاپ')) {
+                    selections.product = 'laptop';
+                    addBotMessage('لپ‌تاپ‌های حرفه‌ای موجود در فروشگاه:');
+                    showRecommendations();
+                } else if (reply.includes('تبلت')) {
+                    selections.product = 'tablet';
+                    addBotMessage('تبلت‌های موجود رو ببینید:');
+                    showRecommendations();
+                } else if (reply.includes('لوازم')) {
+                    selections.product = 'accessory';
+                    addBotMessage('لوازم جانبی پرفروش:');
+                    showRecommendations();
+                } else if (reply.includes('خرید')) {
+                    addBotMessage('عالیه! 🎉 برای تکمیل خرید، لطفاً مشخصات خودتون رو وارد کنید.');
+                    addQuickReplies(['💳 پرداخت آنلاین', '📞 تماس تلفنی']);
+                } else {
+                    addBotMessage('ممنون! سؤال دیگه‌ای دارید؟');
+                    addQuickReplies(['📱 گوشی', '💻 لپ‌تاپ', '📊 مقایسه', '🎁 پکیج']);
+                }
+            }, 1200);
+        }
+
+        // Handle Key Press
+        function handleKeyPress(event) {
+            if (event.key === 'Enter') {
+                sendMessage();
+            }
+        }
+
+        // Send Message
+        function sendMessage() {
+            const input = document.getElementById('userInput');
+            const text = input.value.trim();
+            if (!text) return;
+
+            addUserMessage(text);
+            input.value = '';
+            document.getElementById('quickReplies').innerHTML = '';
+
+            showTyping();
+
+            setTimeout(() => {
+                hideTyping();
+
+                if (text.includes('گوشی') || text.includes('موبایل')) {
+                    selections.product = 'phone';
+                    addBotMessage('برای گوشی موبایل، این گزینه‌ها رو داریم:');
+                    showRecommendations();
+                } else if (text.includes('لپ‌تاپ') || text.includes('کامپیوتر')) {
+                    selections.product = 'laptop';
+                    addBotMessage('لپ‌تاپ‌های موجود:');
+                    showRecommendations();
+                } else if (text.includes('قیمت') || text.includes('ارزان')) {
+                    addBotMessage('ارزان‌ترین گزینه‌ها:');
+                    addProductCard({
+                        name: 'Redmi Note 13',
+                        badge: 'اقتصادی',
+                        badgeType: '',
+                        specs: ['108MP', '5000mAh', '120Hz'],
+                        desc: 'بهترین گوشی اقتصادی با دوربین عالی',
+                        price: '۸,۵۰۰,۰۰۰',
+                        oldPrice: null
+                    });
+                } else if (text.includes('کمک') || text.includes('راهنما')) {
+                    addBotMessage('من می‌تونم کمکتون کنم:');
+                    addQuickReplies(['📱 انتخاب گوشی', '💻 انتخاب لپ‌تاپ', '📊 مقایسه', '🎁 پکیج تخفیفی']);
+                } else {
+                    addBotMessage('ممنون از پیامتون! چطور می‌تونم کمکتون کنم؟');
+                    addQuickReplies(['📱 گوشی', '💻 لپ‌تاپ', '📊 مقایسه', '🎁 پکیج']);
+                }
+            }, 1500);
+        }
+
+        // Show Typing
+        function showTyping() {
+            document.getElementById('typingIndicator').classList.add('active');
+            document.getElementById('statusText').textContent = 'در حال تایپ...';
+            scrollToBottom();
+        }
+
+        // Hide Typing
+        function hideTyping() {
+            document.getElementById('typingIndicator').classList.remove('active');
+            document.getElementById('statusText').textContent = 'آنلاین';
+        }
+
+        // Scroll to Bottom
+        function scrollToBottom() {
+            const messagesArea = document.getElementById('messagesArea');
+            messagesArea.scrollTop = messagesArea.scrollHeight;
+        }
+    </script>
+</body>
+</html>

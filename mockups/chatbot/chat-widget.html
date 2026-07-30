@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>چت‌بات فروشگاه تکنولوژی</title>
+    <link rel="stylesheet" href="chat-style.css">
+</head>
+<body>
+    <!-- Chat Button -->
+    <div class="chat-button" onclick="toggleChat()">
+        <svg viewBox="0 0 24 24">
+            <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H6l-2 2V4h16v12z"/>
+        </svg>
+    </div>
+
+    <!-- Chat Window -->
+    <div class="chat-window" id="chatWindow">
+        <!-- Header -->
+        <div class="chat-header">
+            <div class="chat-header-info">
+                <div class="chat-avatar">📱</div>
+                <div class="chat-header-text">
+                    <h3>تکی‌بات</h3>
+                    <span>آنلاین</span>
+                </div>
+            </div>
+            <button class="chat-close" onclick="toggleChat()">✕</button>
+        </div>
+
+        <!-- Messages -->
+        <div class="chat-messages">
+            <div class="message message-bot">
+                سلام! 👋 من تکی‌بات هستم، دستیار هوشمند فروشگاه تکنولوژی شما.
+            </div>
+            <div class="message message-bot">
+                چه نوع محصولی دنبال می‌گردید؟ گوشی، لپ‌تاپ، تبلت یا لوازم جانبی؟
+            </div>
+            <div class="message-time" style="align-self: flex-start;">۱۴:۳۲</div>
+
+            <div class="message message-user">
+                یه گوشی خوب برای عکاسی می‌خوام، بودجم حدود ۳۰ میلیونه
+            </div>
+            <div class="message-time" style="align-self: flex-end;">۱۴:۳۳</div>
+
+            <div class="message message-bot">
+                عالیه! با بودجه ۳۰ میلیون، چند گزینه عالی برای عکاسی دارم:
+            </div>
+
+            <div class="recommendation-card">
+                <div class="recommendation-header">
+                    <div class="recommendation-title">iPhone 15 Pro</div>
+                    <div class="recommendation-badge">بهترین انتخاب</div>
+                </div>
+                <div class="recommendation-desc">
+                    دوربین ۴۸ مگاپیکسلی، تراشه A17 Pro، بدنه تیتانیومی. عکاسی حرفه‌ای در شب و روز.
+                </div>
+                <div class="recommendation-price">۲۸,۵۰۰,۰۰۰ تومان</div>
+                <div class="recommendation-actions">
+                    <button class="btn-details">مقایسه</button>
+                    <button class="btn-buy-now">خرید</button>
+                </div>
+            </div>
+
+            <div class="recommendation-card">
+                <div class="recommendation-header">
+                    <div class="recommendation-title">Samsung S24 Ultra</div>
+                    <div class="recommendation-badge">محبوب</div>
+                </div>
+                <div class="recommendation-desc">
+                    دوربین ۲۰۰ مگاپیکسلی، قلم S-Pen، هوش مصنوعی Galaxy AI. بهترین برای فیلمبرداری.
+                </div>
+                <div class="recommendation-price">۲۹,۹۰۰,۰۰۰ تومان</div>
+                <div class="recommendation-actions">
+                    <button class="btn-details">مقایسه</button>
+                    <button class="btn-buy-now">خرید</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quick Replies -->
+        <div class="quick-replies">
+            <button class="quick-reply-btn">مقایسه دوربین‌ها</button>
+            <button class="quick-reply-btn">گزینه ارزون‌تر</button>
+            <button class="quick-reply-btn">لوازم جانبی</button>
+        </div>
+
+        <!-- Input -->
+        <div class="chat-input">
+            <input type="text" placeholder="پیام خود را بنویسید...">
+            <button class="chat-send">
+                <svg viewBox="0 0 24 24">
+                    <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    <script>
+        function toggleChat() {
+            const chatWindow = document.getElementById('chatWindow');
+            chatWindow.style.display = chatWindow.style.display === 'none' ? 'flex' : 'none';
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>چت‌بات فروشگاه تکنولوژی - سبد پیشنهادی</title>
+    <link rel="stylesheet" href="chat-style.css">
+    <style>
+        .basket-header {
+            background: linear-gradient(135deg, #2563eb, #7c3aed);
+            color: white;
+            padding: 16px;
+            border-radius: 12px;
+            margin-bottom: 12px;
+        }
+        .basket-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+        .basket-subtitle {
+            font-size: 0.85rem;
+            opacity: 0.9;
+        }
+        .basket-summary {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 12px;
+            padding-top: 12px;
+            border-top: 1px solid rgba(255,255,255,0.3);
+        }
+        .basket-total {
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+        .basket-items {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .basket-item {
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 10px;
+            padding: 12px;
+            display: flex;
+            gap: 12px;
+        }
+        .basket-item-icon {
+            width: 48px;
+            height: 48px;
+            background: #f3f4f6;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+        .basket-item-info {
+            flex: 1;
+        }
+        .basket-item-name {
+            font-weight: 500;
+            margin-bottom: 2px;
+        }
+        .basket-item-desc {
+            font-size: 0.8rem;
+            color: #666;
+        }
+        .basket-item-price {
+            font-weight: 600;
+            color: #2563eb;
+            white-space: nowrap;
+        }
+        .basket-footer {
+            margin-top: 16px;
+            display: flex;
+            gap: 8px;
+        }
+        .btn-basket-buy {
+            flex: 2;
+            padding: 12px;
+            background: linear-gradient(135deg, #16a34a, #15803d);
+            border: none;
+            border-radius: 8px;
+            color: white;
+            font-size: 0.95rem;
+            cursor: pointer;
+            font-weight: 500;
+        }
+        .btn-basket-customize {
+            flex: 1;
+            padding: 12px;
+            background: #f3f4f6;
+            border: none;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            cursor: pointer;
+        }
+        .discount-badge {
+            display: inline-block;
+            padding: 2px 8px;
+            background: #fef2f2;
+            color: #dc2626;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            margin-right: 8px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Chat Button -->
+    <div class="chat-button" onclick="toggleChat()">
+        <svg viewBox="0 0 24 24">
+            <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H6l-2 2V4h16v12z"/>
+        </svg>
+    </div>
+
+    <!-- Chat Window -->
+    <div class="chat-window" id="chatWindow">
+        <!-- Header -->
+        <div class="chat-header">
+            <div class="chat-header-info">
+                <div class="chat-avatar">📱</div>
+                <div class="chat-header-text">
+                    <h3>تکی‌بات</h3>
+                    <span>آنلاین</span>
+                </div>
+            </div>
+            <button class="chat-close" onclick="toggleChat()">✕</button>
+        </div>
+
+        <!-- Messages -->
+        <div class="chat-messages">
+            <div class="message message-bot">
+                پکیج ویژه گیمرها آماده شد! 🎮 بهترین ترکیب برای تجربه گیمینگ حرفه‌ای
+            </div>
+
+            <!-- Basket Card -->
+            <div class="basket-header">
+                <div class="basket-title">🎮 پکیج گیمینگ حرفه‌ای</div>
+                <div class="basket-subtitle">شامل لپ‌تاپ + لوازم جانبی</div>
+                <div class="basket-summary">
+                    <span>مجموع قیمت:</span>
+                    <span class="basket-total">۸۵,۵۰۰,۰۰۰ تومان</span>
+                </div>
+            </div>
+
+            <!-- Basket Items -->
+            <div class="basket-items">
+                <div class="basket-item">
+                    <div class="basket-item-icon">💻</div>
+                    <div class="basket-item-info">
+                        <div class="basket-item-name">ASUS ROG Strix G16</div>
+                        <div class="basket-item-desc">RTX 4070 | 16GB RAM | 1TB SSD</div>
+                    </div>
+                    <div class="basket-item-price">۷۵,۰۰۰,۰۰۰</div>
+                </div>
+                <div class="basket-item">
+                    <div class="basket-item-icon">🎧</div>
+                    <div class="basket-item-info">
+                        <div class="basket-item-name">هدفون گیمینگ Logitech G733</div>
+                        <div class="basket-item-desc">بی‌سیم | surround 7.1</div>
+                    </div>
+                    <div class="basket-item-price">۸,۵۰۰,۰۰۰</div>
+                </div>
+                <div class="basket-item">
+                    <div class="basket-item-icon">🖱️</div>
+                    <div class="basket-item-info">
+                        <div class="basket-item-name">ماوس Logitech G Pro X</div>
+                        <div class="basket-item-desc">۲۵K DPI | بی‌سیم</div>
+                    </div>
+                    <div class="basket-item-price">۲,۰۰۰,۰۰۰</div>
+                </div>
+            </div>
+
+            <!-- Actions -->
+            <div class="basket-footer">
+                <button class="btn-basket-buy">خرید کل پکیج</button>
+                <button class="btn-basket-customize">تغییر محصولات</button>
+            </div>
+
+            <div class="message message-bot" style="margin-top: 12px;">
+                💡 با خرید پکیج، ۱۵٪ تخفیف ویژه دریافت می‌کنید!
+            </div>
+        </div>
+
+        <!-- Quick Replies -->
+        <div class="quick-replies">
+            <button class="btn-basket-customize" style="border: 1px solid #e5e7eb; border-radius: 20px; padding: 8px 14px; background: white; cursor: pointer;">مقایسه لپ‌تاپ‌ها</button>
+            <button class="btn-basket-customize" style="border: 1px solid #e5e7eb; border-radius: 20px; padding: 8px 14px; background: white; cursor: pointer;">گزینه ارزون‌تر</button>
+            <button class="btn-basket-customize" style="border: 1px solid #e5e7eb; border-radius: 20px; padding: 8px 14px; background: white; cursor: pointer;">لوازم جانبی</button>
+        </div>
+
+        <!-- Input -->
+        <div class="chat-input">
+            <input type="text" placeholder="پیام خود را بنویسید...">
+            <button class="chat-send">
+                <svg viewBox="0 0 24 24">
+                    <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    <script>
+        function toggleChat() {
+            const chatWindow = document.getElementById('chatWindow');
+            chatWindow.style.display = chatWindow.style.display === 'none' ? 'flex' : 'none';
+        }
+    </script>
+</body>
+</html>

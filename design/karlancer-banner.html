@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Karlancer Banner</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #1a1a2e;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .banner-container {
+            width: 600px;
+            height: 400px;
+            position: relative;
+            overflow: hidden;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a3e 50%, #0d0d2b 100%);
+        }
+
+        /* Animated Background Elements */
+        .bg-element {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(60px);
+            opacity: 0.4;
+        }
+
+        .bg-1 {
+            width: 400px;
+            height: 400px;
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+            top: -100px;
+            right: -100px;
+        }
+
+        .bg-2 {
+            width: 300px;
+            height: 300px;
+            background: linear-gradient(135deg, #06b6d4, #3b82f6);
+            bottom: -80px;
+            left: -50px;
+        }
+
+        .bg-3 {
+            width: 200px;
+            height: 200px;
+            background: linear-gradient(135deg, #8b5cf6, #ec4899);
+            top: 50%;
+            left: 40%;
+        }
+
+        /* Grid Pattern */
+        .grid-pattern {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image:
+                linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+        }
+
+        /* Content */
+        .content {
+            position: relative;
+            z-index: 10;
+            height: 100%;
+            display: flex;
+            padding: 30px;
+        }
+
+        .left-section {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            max-width: 320px;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(59, 130, 246, 0.15);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            padding: 6px 14px;
+            border-radius: 9999px;
+            font-size: 12px;
+            font-weight: 600;
+            color: #60a5fa;
+            width: fit-content;
+            margin-bottom: 16px;
+        }
+
+        .badge-dot {
+            width: 6px;
+            height: 6px;
+            background: #22c55e;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .title {
+            font-size: 32px;
+            font-weight: 800;
+            color: white;
+            line-height: 1.1;
+            margin-bottom: 8px;
+        }
+
+        .title span {
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6, #ec4899);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .subtitle {
+            font-size: 13px;
+            color: #94a3b8;
+            line-height: 1.5;
+            max-width: 450px;
+        }
+
+        .stats {
+            display: flex;
+            gap: 30px;
+            margin-top: 16px;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 22px;
+            font-weight: 800;
+            color: white;
+        }
+
+        .stat-label {
+            font-size: 12px;
+            color: #64748b;
+            margin-top: 2px;
+        }
+
+        /* Right Section - Tech Stack */
+        .right-section {
+            width: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 6px;
+        }
+
+        .tech-card {
+            width: 55px;
+            height: 55px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s;
+        }
+
+        .tech-card:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(59, 130, 246, 0.5);
+            transform: translateY(-4px);
+        }
+
+        .tech-icon {
+            font-size: 16px;
+        }
+
+        .tech-name {
+            font-size: 8px;
+            font-weight: 600;
+            color: #94a3b8;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+        }
+
+        /* Floating Elements */
+        .float-element {
+            display: none;
+        }
+
+        .float-text {
+            display: none;
+        }
+
+        .float-sub {
+            display: none;
+        }
+
+        /* Responsive for screenshot */
+        @media (max-width: 650px) {
+            .banner-container {
+                width: 100%;
+                height: auto;
+                aspect-ratio: 3 / 2;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="banner-container">
+        <!-- Background Elements -->
+        <div class="bg-element bg-1"></div>
+        <div class="bg-element bg-2"></div>
+        <div class="bg-element bg-3"></div>
+        <div class="grid-pattern"></div>
+
+        <!-- Content -->
+        <div class="content">
+            <!-- Left Section -->
+            <div class="left-section">
+                <div class="badge">
+                    <span class="badge-dot"></span>
+                    Available for Projects
+                </div>
+                <div class="title">
+                    Site, App &<br>
+                    <span>Chatbot</span> Developer
+                </div>
+                <div class="subtitle">
+                    Full-stack developer specializing in modern web applications,
+                    mobile apps, and AI-powered chatbots. Turning ideas into reality.
+                </div>
+                <div class="stats">
+                    <div class="stat-item">
+                        <div class="stat-number">5+</div>
+                        <div class="stat-label">Years Experience</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">50+</div>
+                        <div class="stat-label">Projects Done</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">100%</div>
+                        <div class="stat-label">Client Satisfaction</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Section -->
+            <div class="right-section">
+                <div class="tech-grid">
+                    <div class="tech-card">
+                        <span class="tech-icon">⚛️</span>
+                        <span class="tech-name">React</span>
+                    </div>
+                    <div class="tech-card">
+                        <span class="tech-icon">🔺</span>
+                        <span class="tech-name">Next.js</span>
+                    </div>
+                    <div class="tech-card">
+                        <span class="tech-icon">🐍</span>
+                        <span class="tech-name">Python</span>
+                    </div>
+                    <div class="tech-card">
+                        <span class="tech-icon">🤖</span>
+                        <span class="tech-name">AI/ML</span>
+                    </div>
+                    <div class="tech-card">
+                        <span class="tech-icon">📱</span>
+                        <span class="tech-name">Mobile</span>
+                    </div>
+                    <div class="tech-card">
+                        <span class="tech-icon">💬</span>
+                        <span class="tech-name">Chatbot</span>
+                    </div>
+                    <div class="tech-card">
+                        <span class="tech-icon">🔷</span>
+                        <span class="tech-name">ASP.NET</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

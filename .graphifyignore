@@ -1,0 +1,61 @@
+# Build artifacts
+backend/Shodamad/obj/
+backend/Shodamad/bin/
+frontendvite/dist/
+frontendvite/build/
+
+# Dependencies
+frontendvite/node_modules/
+backend/Shodamad/packages/
+
+# Uploaded user documents (car docs, driver docs, deposit slips, contracts)
+backend/Shodamad/Upload/
+
+# Financial report temp/template files
+backend/Shodamad/file/pdf-report/
+
+# Numbered station map markers (65+ identical pin icons)
+frontendvite/public/station-map-marker/
+
+# Car brand logos (static asset, not architecture-relevant)
+frontendvite/public/images/car-brand-logo/
+
+# Seasonal images
+frontendvite/public/images/seasons/
+frontendvite/public/images/seasons-background/
+
+# UI backgrounds
+frontendvite/public/images/background/
+
+# Vehicle icons (map markers)
+frontendvite/public/images/vehicle-icons/
+
+# Static image assets
+frontendvite/public/images/login-bg.svg
+frontendvite/public/images/peyman-nobahar-login-bg.svg
+frontendvite/public/images/benz-302*.webp
+frontendvite/public/images/bus-gray*.png
+frontendvite/public/images/pelak-bg*.png
+frontendvite/public/images/smartphone.png
+frontendvite/public/images/user-picture.png
+frontendvite/public/images/bus.png
+frontendvite/public/images/logo/
+
+# Logos
+backend/Shodamad/images/logos/
+
+# Static web assets (auto-generated)
+backend/Shodamad/obj/Debug/
+
+# IDE / OS
+.vscode/
+.idea/
+*.suo
+*.user
+Thumbs.db
+.DS_Store
+
+# Misc
+*.min.js
+*.min.css
+graphify-out/

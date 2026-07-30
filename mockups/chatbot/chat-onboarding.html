@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>چت‌بات فروشگاه تکنولوژی - ثبت‌نام</title>
+    <link rel="stylesheet" href="chat-style.css">
+</head>
+<body>
+    <!-- Chat Button -->
+    <div class="chat-button" onclick="toggleChat()">
+        <svg viewBox="0 0 24 24">
+            <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H6l-2 2V4h16v12z"/>
+        </svg>
+    </div>
+
+    <!-- Chat Window -->
+    <div class="chat-window" id="chatWindow">
+        <!-- Header -->
+        <div class="chat-header">
+            <div class="chat-header-info">
+                <div class="chat-avatar">📱</div>
+                <div class="chat-header-text">
+                    <h3>تکی‌بات</h3>
+                    <span>آماده کمک</span>
+                </div>
+            </div>
+            <button class="chat-close" onclick="toggleChat()">✕</button>
+        </div>
+
+        <!-- Onboarding Content -->
+        <div class="onboarding-container">
+            <!-- Progress -->
+            <div class="onboarding-progress">
+                <div class="progress-step active"></div>
+                <div class="progress-step active"></div>
+                <div class="progress-step"></div>
+            </div>
+
+            <!-- Step 2 Content -->
+            <div class="onboarding-title">دنبال چه محصولی هستید؟</div>
+            <div class="onboarding-subtitle">انتخاب کنید تا بهترین پیشنهادات را دریافت کنیم</div>
+
+            <div class="quiz-options">
+                <div class="quiz-option" onclick="selectOption(this)">
+                    <div class="quiz-option-title">📱 گوشی موبایل</div>
+                    <div class="quiz-option-desc">آیفون، سامسونگ، شیائومی و...</div>
+                </div>
+                <div class="quiz-option selected" onclick="selectOption(this)">
+                    <div class="quiz-option-title">💻 لپ‌تاپ</div>
+                    <div class="quiz-option-desc">مک‌بوک، لپ‌تاپ گیمینگ، اداری</div>
+                </div>
+                <div class="quiz-option" onclick="selectOption(this)">
+                    <div class="quiz-option-title">📱 تبلت</div>
+                    <div class="quiz-option-desc">آیپد، تبلت اندرویدی</div>
+                </div>
+                <div class="quiz-option" onclick="selectOption(this)">
+                    <div class="quiz-option-title">⌚ ساعت هوشمند</div>
+                    <div class="quiz-option-desc">اپل واچ، سامسونگ واچ</div>
+                </div>
+                <div class="quiz-option" onclick="selectOption(this)">
+                    <div class="quiz-option-title">🎧 لوازم جانبی</div>
+                    <div class="quiz-option-desc">هدفون، کیف، کیس و...</div>
+                </div>
+            </div>
+
+            <!-- Navigation -->
+            <div class="onboarding-nav">
+                <button class="btn-back">مرحله قبل</button>
+                <button class="btn-next">مرحله بعد</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleChat() {
+            const chatWindow = document.getElementById('chatWindow');
+            chatWindow.style.display = chatWindow.style.display === 'none' ? 'flex' : 'none';
+        }
+
+        function selectOption(el) {
+            document.querySelectorAll('.quiz-option').forEach(opt => {
+                opt.classList.remove('selected');
+            });
+            el.classList.add('selected');
+        }
+    </script>
+</body>
+</html>

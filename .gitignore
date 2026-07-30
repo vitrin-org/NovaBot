@@ -26,3 +26,5 @@ Thumbs.db
 
 # Qdrant data
 qdrant_data/
+
+graphify-out/

@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechBot - Shopping Chatbot Mockup</title>
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Vazirmatn', sans-serif; background: #f3f4f6; display: flex; justify-content: center; align-items: center; min-height: 100vh; gap: 40px; padding: 40px; flex-wrap: wrap; }
+
+        .frame-wrapper { position: relative; margin-bottom: 40px; }
+
+        .phone {
+            width: 380px;
+            height: 540px;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid #e5e7eb;
+        }
+
+        /* Header */
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 16px;
+            border-bottom: 1px solid #f3f4f6;
+            background: linear-gradient(135deg, #1e40af, #7c3aed);
+        }
+        .header-left { display: flex; align-items: center; gap: 8px; }
+        .header-btn {
+            width: 28px;
+            height: 28px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(255,255,255,0.7);
+            cursor: pointer;
+            background: none;
+            border: none;
+        }
+        .header-btn:hover { background: rgba(255,255,255,0.1); color: white; }
+        .header-btn svg { width: 20px; height: 20px; }
+        .header-btn.active { color: white; background: rgba(255,255,255,0.2); }
+        .header-title { font-size: 14px; font-weight: 600; color: white; }
+        .header-sub { font-size: 11px; color: rgba(255,255,255,0.8); }
+        .close-btn { color: rgba(255,255,255,0.7); background: none; border: none; cursor: pointer; }
+        .close-btn svg { width: 20px; height: 20px; }
+
+        /* Body */
+        .body { flex: 1; overflow-y: auto; padding: 16px; display: flex; flex-direction: column; gap: 12px; direction: rtl; }
+
+        /* Quiz */
+        .quiz-label { font-size: 14px; font-weight: 600; color: #111827; margin-bottom: 8px; }
+        .pills { display: flex; flex-wrap: wrap; gap: 8px; }
+        .pill {
+            border: 1.5px solid #e5e7eb;
+            border-radius: 9999px;
+            padding: 6px 14px;
+            font-size: 13px;
+            color: #4b5563;
+            cursor: pointer;
+            background: white;
+            font-family: 'Vazirmatn', sans-serif;
+            transition: all 0.2s;
+        }
+        .pill.selected { border-color: #3b82f6; background: #eff6ff; color: #1d4ed8; font-weight: 600; }
+        .pill:hover { border-color: #d1d5db; }
+
+        .textarea {
+            width: 100%;
+            border: 1.5px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 10px 12px;
+            font-family: 'Vazirmatn', sans-serif;
+            font-size: 13px;
+            resize: none;
+            outline: none;
+            direction: rtl;
+            line-height: 1.6;
+        }
+        .textarea:focus { border-color: #3b82f6; }
+
+        .btn {
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 10px 18px;
+            font-family: 'Vazirmatn', sans-serif;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            align-self: flex-start;
+            transition: transform 0.2s;
+        }
+        .btn:hover { transform: scale(1.02); }
+
+        /* Product Cards */
+        .product-card {
+            border: 2px solid #f3f4f6;
+            border-radius: 14px;
+            padding: 16px;
+            background: white;
+            transition: all 0.2s;
+        }
+        .product-card:hover { border-color: #e5e7eb; }
+        .product-card.featured {
+            border-color: #fbbf24;
+            background: linear-gradient(135deg, #fffbeb, #ffffff);
+        }
+        .featured-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #f59e0b, #f97316);
+            color: white;
+            font-size: 11px;
+            font-weight: 700;
+            padding: 3px 10px;
+            border-radius: 9999px;
+            margin-bottom: 8px;
+            box-shadow: 0 2px 8px rgba(249, 115, 22, 0.3);
+        }
+        .product-image {
+            width: 100%;
+            height: 120px;
+            background: #f3f4f6;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            margin-bottom: 12px;
+        }
+        .product-name { font-size: 16px; font-weight: 700; color: #111827; margin-bottom: 4px; line-height: 1.3; }
+        .product-brand {
+            display: inline-block;
+            background: #f3f4f6;
+            color: #6b7280;
+            font-size: 11px;
+            font-weight: 500;
+            padding: 2px 8px;
+            border-radius: 6px;
+            margin-bottom: 8px;
+        }
+        .product-specs { display: flex; gap: 6px; margin-bottom: 10px; flex-wrap: wrap; }
+        .product-spec {
+            background: #eff6ff;
+            color: #1d4ed8;
+            font-size: 11px;
+            padding: 3px 8px;
+            border-radius: 6px;
+        }
+        .product-desc { font-size: 12px; color: #6b7280; line-height: 1.6; margin-bottom: 12px; }
+        .product-footer { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid #f3f4f6; padding-top: 12px; }
+        .product-price { font-size: 18px; font-weight: 700; color: #1e40af; }
+        .product-old-price { text-decoration: line-through; color: #9ca3af; font-size: 12px; margin-right: 6px; }
+        .product-actions { display: flex; gap: 8px; }
+        .btn-buy {
+            background: #10b981;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 8px 14px;
+            font-family: 'Vazirmatn', sans-serif;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+        .btn-details {
+            background: #f3f4f6;
+            color: #374151;
+            border: none;
+            border-radius: 8px;
+            padding: 8px 14px;
+            font-family: 'Vazirmatn', sans-serif;
+            font-size: 12px;
+            cursor: pointer;
+        }
+
+        /* Basket Header */
+        .basket-header {
+            background: linear-gradient(135deg, #eff6ff, #f0fdf4);
+            border-radius: 12px;
+            padding: 14px;
+        }
+        .basket-title { font-size: 15px; font-weight: 700; color: #111827; margin-bottom: 4px; }
+        .basket-desc { font-size: 12px; color: #6b7280; line-height: 1.6; }
+
+        /* Match bar */
+        .match-row { display: flex; align-items: center; gap: 8px; border-top: 1px solid #f3f4f6; padding-top: 10px; margin-top: 8px; }
+        .match-bar { flex: 1; height: 6px; background: #f3f4f6; border-radius: 3px; overflow: hidden; }
+        .match-fill { height: 100%; background: linear-gradient(90deg, #3b82f6, #8b5cf6); border-radius: 3px; }
+        .match-pct { font-size: 11px; color: #9ca3af; white-space: nowrap; }
+
+        /* Cost bar */
+        .cost-bar {
+            background: linear-gradient(135deg, #f0fdf4, #ecfdf5);
+            border-radius: 10px;
+            padding: 12px 14px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border: 1px solid #bbf7d0;
+        }
+        .cost-label { font-size: 12px; color: #16a34a; }
+        .cost-value { font-size: 14px; font-weight: 700; color: #16a34a; }
+
+        /* Messages - RTL: user=right, AI=left */
+        .msg { max-width: 85%; padding: 10px 14px; border-radius: 16px; font-size: 13px; line-height: 1.7; }
+        .msg.user { background: linear-gradient(135deg, #3b82f6, #8b5cf6); color: white; margin-right: 0; margin-left: auto; border-bottom-left-radius: 4px; }
+        .msg.ai { background: #f3f4f6; color: #1f2937; margin-left: 0; margin-right: auto; border-bottom-right-radius: 4px; }
+
+        /* Input */
+        .input-bar {
+            padding: 12px 16px;
+            border-top: 1px solid #f3f4f6;
+            display: flex;
+            gap: 8px;
+            background: white;
+        }
+        .input-bar input {
+            flex: 1;
+            border: 1.5px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 8px 12px;
+            font-family: 'Vazirmatn', sans-serif;
+            font-size: 13px;
+            outline: none;
+            direction: rtl;
+        }
+        .input-bar input:focus { border-color: #3b82f6; }
+        .send-btn {
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 8px 16px;
+            font-family: 'Vazirmatn', sans-serif;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        /* History Panel */
+        .history-panel {
+            background: #f9fafb;
+            border-bottom: 1px solid #f3f4f6;
+            padding: 12px;
+        }
+        .history-label { font-size: 11px; font-weight: 600; color: #9ca3af; margin-bottom: 8px; }
+        .history-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 8px 12px;
+            border-radius: 8px;
+            margin-bottom: 4px;
+            cursor: pointer;
+            font-size: 13px;
+        }
+        .history-item.active { background: #eff6ff; color: #1d4ed8; font-weight: 600; }
+        .history-item.normal { background: white; color: #374151; }
+        .history-item.normal:hover { background: #f3f4f6; }
+        .history-delete { color: #9ca3af; background: none; border: none; cursor: pointer; font-size: 14px; margin-right: 8px; }
+        .history-delete:hover { color: #ef4444; }
+
+        /* Comparison Table */
+        .comparison-card {
+            border: 2px solid #e5e7eb;
+            border-radius: 12px;
+            overflow: hidden;
+            background: white;
+        }
+        .comparison-header {
+            background: #f9fafb;
+            padding: 10px 14px;
+            font-size: 13px;
+            font-weight: 600;
+            color: #374151;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        .comparison-row {
+            display: flex;
+            border-bottom: 1px solid #f3f4f6;
+        }
+        .comparison-row:last-child { border-bottom: none; }
+        .comparison-cell {
+            flex: 1;
+            padding: 10px 12px;
+            font-size: 12px;
+            color: #6b7280;
+        }
+        .comparison-cell.label { font-weight: 600; color: #374151; background: #f9fafb; flex: 0.8; }
+        .comparison-cell.winner { color: #16a34a; font-weight: 600; }
+
+        .frame-label {
+            text-align: center;
+            font-size: 12px;
+            color: #9ca3af;
+            margin-top: 12px;
+        }
+
+        h2.page-title { text-align: center; font-size: 24px; font-weight: 700; color: #111827; margin-bottom: 8px; }
+        p.page-sub { text-align: center; font-size: 13px; color: #6b7280; margin-bottom: 32px; }
+    </style>
+</head>
+<body>
+    <div>
+        <h2 class="page-title">TechBot Chat UI</h2>
+        <p class="page-sub">رابط کاربری چت‌بات فروشگاه تکنولوژی — خرید هوشمند گوشی، لپ‌تاپ و لوازم جانبی</p>
+        <div style="display:flex; gap:32px; justify-content:center; flex-wrap:wrap;">
+
+            <!-- Frame 1: Quiz Step 1 -->
+            <div class="frame-wrapper">
+                <div class="phone">
+                    <div class="header">
+                        <div class="header-left">
+                            <div class="header-btn active">
+                                <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                            </div>
+                            <div class="header-btn">
+                                <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+                            </div>
+                            <div>
+                                <div class="header-title">تکی‌بات</div>
+                                <div class="header-sub">بهترین تکنولوژی رو انتخاب کنید</div>
+                            </div>
+                        </div>
+                        <div class="close-btn">
+                            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+                        </div>
+                    </div>
+                    <div class="body">
+                        <div class="quiz-label">📱 دنبال چه محصولی هستید؟</div>
+                        <div class="pills">
+                            <div class="pill selected">گوشی موبایل</div>
+                            <div class="pill">لپ‌تاپ</div>
+                            <div class="pill">تبلت</div>
+                            <div class="pill">ساعت هوشمند</div>
+                            <div class="pill">هدفون و هندزفری</div>
+                            <div class="pill">لوازم جانبی</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="frame-label">مرحله ۱: انتخاب نوع محصول</div>
+            </div>
+
+            <!-- Frame 2: Quiz Step 2 -->
+            <div class="frame-wrapper">
+                <div class="phone">
+                    <div class="header">
+                        <div class="header-left">
+                            <div class="header-btn">
+                                <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                            </div>
+                            <div class="header-btn">
+                                <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+                            </div>
+                            <div>
+                                <div class="header-title">تکی‌بات</div>
+                                <div class="header-sub">بهترین تکنولوژی رو انتخاب کنید</div>
+                            </div>
+                        </div>
+                        <div class="close-btn">
+                            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+                        </div>
+                    </div>
+                    <div class="body">
+                        <div class="quiz-label">💰 بودجه شما چقدره؟</div>
+                        <div class="pills">
+                            <div class="pill">زیر ۵ میلیون</div>
+                            <div class="pill">۵ تا ۱۵ میلیون</div>
+                            <div class="pill selected">۱۵ تا ۳۰ میلیون</div>
+                            <div class="pill">۳۰ تا ۶۰ میلیون</div>
+                            <div class="pill">بالای ۶۰ میلیون</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="frame-label">مرحله ۲: انتخاب بودجه</div>
+            </div>
+
+            <!-- Frame 3: Quiz Step 3 -->
+            <div class="frame-wrapper">
+                <div class="phone">
+                    <div class="header">
+                        <div class="header-left">
+                            <div class="header-btn">
+                                <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                            </div>
+                            <div class="header-btn">
+                                <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+                            </div>
+                            <div>
+                                <div class="header-title">تکی‌بات</div>
+                                <div class="header-sub">بهترین تکنولوژی رو انتخاب کنید</div>
+                            </div>
+                        </div>
+                        <div class="close-btn">
+                            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+                        </div>
+                    </div>
+                    <div class="body">
+                        <div class="quiz-label">🎯 اولویت شما چیه؟</div>
+                        <div class="pills">
+                            <div class="pill selected">📷 کیفیت دوربین</div>
+                            <div class="pill">⚡ سرعت و عملکرد</div>
+                            <div class="pill">🔋 عمر باتری</div>
+                            <div class="pill">✨ طراحی و ظاهر</div>
+                            <div class="pill">🎮 گیمینگ</div>
+                            <div class="pill">💼 کار و اداری</div>
+                        </div>
+                        <button class="btn">🔍 نمایش پیشنهادات</button>
+                    </div>
+                </div>
+                <div class="frame-label">مرحله ۳: انتخاب اولویت</div>
+            </div>
+
+            <!-- Frame 4: Product Recommendation -->
+            <div class="frame-wrapper">
+                <div class="phone">
+                    <div class="header">
+                        <div class="header-left">
+                            <div class="header-btn">
+                                <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                            </div>
+                            <div class="header-btn">
+                                <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+                            </div>
+                            <div>
+                                <div class="header-title">تکی‌بات</div>
+                                <div class="header-sub">بهترین تکنولوژی رو انتخاب کنید</div>
+                            </div>
+                        </div>
+                        <div class="close-btn">
+                            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+                        </div>
+                    </div>
+                    <div class="body">
+                        <div class="basket-header">
+                            <div class="basket-title">📱 گوشی‌های مناسب شما</div>
+                            <div class="basket-desc">با بودجه ۱۵ تا ۳۰ میلیون و اولویت دوربین، این گزینه‌ها بهترین هستند:</div>
+                        </div>
+
+                        <div class="product-card featured">
+                            <div class="featured-badge">🏆 بهترین انتخاب</div>
+                            <div class="product-image">📱</div>
+                            <div class="product-name">iPhone 15 Pro</div>
+                            <div class="product-brand">Apple</div>
+                            <div class="product-specs">
+                                <span class="product-spec">A17 Pro</span>
+                                <span class="product-spec">48MP</span>
+                                <span class="product-spec">256GB</span>
+                            </div>
+                            <div class="product-desc">بهترین دوربین برای عکاسی حرفه‌ای با تراشه قدرتمند A17 Pro</div>
+                            <div class="product-footer">
+                                <div>
+                                    <span class="product-old-price">۳۲,۰۰۰,۰۰۰</span>
+                                    <span class="product-price">۲۸,۵۰۰,۰۰۰</span>
+                                </div>
+                                <div class="product-actions">
+                                    <button class="btn-details">مقایسه</button>
+                                    <button class="btn-buy">خرید</button>
+                                </div>
+                            </div>
+                            <div class="match-row">
+                                <div class="match-bar"><div class="match-fill" style="width:95%"></div></div>
+                                <span class="match-pct">۹۵٪ تطابق</span>
+                            </div>
+                        </div>
+
+                        <div class="product-card">
+                            <div class="product-image">📱</div>
+                            <div class="product-name">Samsung Galaxy S24</div>
+                            <div class="product-brand">Samsung</div>
+                            <div class="product-specs">
+                                <span class="product-spec">Snapdragon 8</span>
+                                <span class="product-spec">200MP</span>
+                                <span class="product-spec">256GB</span>
+                            </div>
+                            <div class="product-desc">دوربین ۲۰۰ مگاپیکسلی با هوش مصنوعی Galaxy AI</div>
+                            <div class="product-footer">
+                                <div>
+                                    <span class="product-price">۲۹,۹۰۰,۰۰۰</span>
+                                </div>
+                                <div class="product-actions">
+                                    <button class="btn-details">مقایسه</button>
+                                    <button class="btn-buy">خرید</button>
+                                </div>
+                            </div>
+                            <div class="match-row">
+                                <div class="match-bar"><div class="match-fill" style="width:88%"></div></div>
+                                <span class="match-pct">۸۸٪ تطابق</span>
+                            </div>
+                        </div>
+
+                        <div class="cost-bar">
+                            <span class="cost-label">بودجه شما</span>
+                            <span class="cost-value">۱۵ تا ۳۰ میلیون تومان</span>
+                        </div>
+                    </div>
+                    <div class="input-bar">
+                        <input placeholder="درباره محصولات سوال بپرسید...">
+                        <button class="send-btn">ارسال</button>
+                    </div>
+                </div>
+                <div class="frame-label">نتیجه: پیشنهاد محصولات</div>
+            </div>
+
+            <!-- Frame 5: Comparison -->
+            <div class="frame-wrapper">
+                <div class="phone">
+                    <div class="header">
+                        <div class="header-left">
+                            <div class="header-btn">
+                                <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                            </div>
+                            <div class="header-btn">
+                                <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+                            </div>
+                            <div>
+                                <div class="header-title">تکی‌بات</div>
+                                <div class="header-sub">بهترین تکنولوژی رو انتخاب کنید</div>
+                            </div>
+                        </div>
+                        <div class="close-btn">
+                            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+                        </div>
+                    </div>
+                    <div class="body">
+                        <div class="basket-header">
+                            <div class="basket-title">📊 مقایسه محصولات</div>
+                            <div class="basket-desc">مقایسه دو گوشی محبوب بازار:</div>
+                        </div>
+
+                        <div class="comparison-card">
+                            <div class="comparison-header">iPhone 15 Pro vs Galaxy S24</div>
+                            <div class="comparison-row">
+                                <div class="comparison-cell label">دوربین</div>
+                                <div class="comparison-cell">48MP</div>
+                                <div class="comparison-cell winner">200MP ⭐</div>
+                            </div>
+                            <div class="comparison-row">
+                                <div class="comparison-cell label">پردازنده</div>
+                                <div class="comparison-cell winner">A17 Pro ⭐</div>
+                                <div class="comparison-cell">Snapdragon 8</div>
+                            </div>
+                            <div class="comparison-row">
+                                <div class="comparison-cell label">باتری</div>
+                                <div class="comparison-cell">3279mAh</div>
+                                <div class="comparison-cell winner">4000mAh ⭐</div>
+                            </div>
+                            <div class="comparison-row">
+                                <div class="comparison-cell label">قیمت</div>
+                                <div class="comparison-cell winner">28.5M ⭐</div>
+                                <div class="comparison-cell">29.9M</div>
+                            </div>
+                            <div class="comparison-row">
+                                <div class="comparison-cell label">امتیاز کل</div>
+                                <div class="comparison-cell winner">۹۲ ⭐</div>
+                                <div class="comparison-cell">۸۸</div>
+                            </div>
+                        </div>
+
+                        <div class="msg ai" style="margin-top: 12px;">
+                            💡 <strong>پیشنهاد من:</strong> اگر دوربین و قیمت مهم‌تره، <strong>iPhone 15 Pro</strong> بهتره. اگر باتری و تنوع امکانات می‌خواید، <strong>Galaxy S24</strong> مناسب‌تره.
+                        </div>
+                    </div>
+                    <div class="input-bar">
+                        <input placeholder="درباره محصولات سوال بپرسید...">
+                        <button class="send-btn">ارسال</button>
+                    </div>
+                </div>
+                <div class="frame-label">مقایسه محصولات</div>
+            </div>
+
+            <!-- Frame 6: Chat -->
+            <div class="frame-wrapper">
+                <div class="phone">
+                    <div class="header">
+                        <div class="header-left">
+                            <div class="header-btn">
+                                <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                            </div>
+                            <div class="header-btn">
+                                <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+                            </div>
+                            <div>
+                                <div class="header-title">تکی‌بات</div>
+                                <div class="header-sub">بهترین تکنولوژی رو انتخاب کنید</div>
+                            </div>
+                        </div>
+                        <div class="close-btn">
+                            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+                        </div>
+                    </div>
+                    <div class="body">
+                        <div class="msg user">گوشی با باتری خوب می‌خوام، بودجم ۲۰ میلیونه</div>
+
+                        <div class="msg ai">
+                            عالیه! 🎯 برای بودجه ۲۰ میلیون با اولویت باتری، <strong>Samsung A55</strong> و <strong>Xiaomi 14</strong> بهترین گزینه‌ها هستن:<br><br>
+                            🔋 <strong>Samsung A55</strong> - باتری ۵۰۰۰mAh<br>
+                            🔋 <strong>Xiaomi 14</strong> - باتری ۴۶۱۰mAh با شارژ ۹۰ وات
+                        </div>
+
+                        <div class="msg user">Xiaomi 14 دوربینش چطوره؟</div>
+
+                        <div class="msg ai">
+                            <strong>Xiaomi 14</strong> دوربین فوق‌العاده‌ای داره:<br><br>
+                            📷 دوربین اصلی: ۵۰ مگاپیکسل (لایکا)<br>
+                            📷 اولتراواید: ۵۰ مگاپیکسل<br>
+                            📷 تله‌فوتو: ۵۰ مگاپیکسل<br><br>
+                            همکاری با <strong>لایکا</strong> کیفیت عکس‌ها رو خیلی بالا برده! 📸
+                        </div>
+
+                        <div class="msg user">ممنون، همینو می‌خوام بخرم</div>
+
+                        <div class="msg ai">
+                            🛒 عالیه! برای خرید <strong>Xiaomi 14</strong>:<br><br>
+                            💰 قیمت: ۱۹,۵۰۰,۰۰۰ تومان<br>
+                            ✅ گارانتی ۱۸ ماهه<br>
+                            🚚 ارسال رایگان<br><br>
+                            روی دکمه خرید کلیک کنید! 🎉
+                        </div>
+                    </div>
+                    <div class="input-bar">
+                        <input placeholder="درباره محصولات سوال بپرسید...">
+                        <button class="send-btn">ارسال</button>
+                    </div>
+                </div>
+                <div class="frame-label">گفتگوی هوشمند با کاربر</div>
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>
