@@ -39,21 +39,26 @@ class VectorStore:
             text = f"{p['name']} {p.get('summary', '')} {p.get('full_description', '')}"
             vector = embed(text)
             point_id = str(uuid.uuid5(uuid.NAMESPACE_DNS, p["product_id"]))
+            payload = {
+                "product_id": p["product_id"],
+                "name": p["name"],
+                "summary": p.get("summary", ""),
+                "full_description": p.get("full_description", ""),
+                "categories": p.get("categories", []),
+                "budget_tier": p.get("budget_tier", 0),
+                "sponsor_tier": p.get("sponsor_tier", 0),
+                "pricing_type": p.get("pricing_type", "free"),
+                "target_audience": p.get("target_audience", ""),
+            }
+            if "productplus_metadata" in p:
+                payload["productplus_metadata"] = p["productplus_metadata"]
+            if "source" in p:
+                payload["source"] = p["source"]
             points.append(
                 PointStruct(
                     id=point_id,
                     vector=vector,
-                    payload={
-                        "product_id": p["product_id"],
-                        "name": p["name"],
-                        "summary": p.get("summary", ""),
-                        "full_description": p.get("full_description", ""),
-                        "categories": p.get("categories", []),
-                        "budget_tier": p.get("budget_tier", 0),
-                        "sponsor_tier": p.get("sponsor_tier", 0),
-                        "pricing_type": p.get("pricing_type", "free"),
-                        "target_audience": p.get("target_audience", ""),
-                    },
+                    payload=payload,
                 )
             )
         self.client.upsert(collection_name=COLLECTION_NAME, points=points)

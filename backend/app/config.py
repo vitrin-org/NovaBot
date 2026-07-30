@@ -15,6 +15,16 @@ class Settings(BaseSettings):
     qdrant_url: str = "http://localhost:6333"
     embedding_provider: str = "local"
 
+    # Data source: "mock" or "productplus"
+    data_source: str = "mock"
+
+    # ProductPlus DB (used when data_source == "productplus")
+    productplus_host: str = "localhost"
+    productplus_port: int = 5432
+    productplus_db: str = "SyntaSys"
+    productplus_user: str = "admin"
+    productplus_password: str = "1234"
+
     class Config:
         env_file = ".env"
         env_file_encoding = "utf-8"
