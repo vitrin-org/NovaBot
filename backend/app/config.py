@@ -6,10 +6,10 @@ class Settings(BaseSettings):
     brand_name: str = "NovaBot"
     brand_name_fa: str = "نوابات"
 
-    # API
-    api_base_url: str = "https://hooshyar.payampardaz.com/api/v1"
-    api_key: str = "sk-4fde6674ba894ac495fac12b8125aee0"
-    llm_model: str = "gemini-3.1-flash-lite-preview"
+    # API (Google AI Studio / Gemini)
+    api_base_url: str = "https://generativelanguage.googleapis.com/v1beta"
+    api_key: str = ""
+    llm_model: str = "gemini-1.5-flash"
 
     # Qdrant
     qdrant_url: str = "http://localhost:6333"
@@ -33,7 +33,7 @@ class Settings(BaseSettings):
 
     # AI Document Validation
     ai_validation_enabled: bool = True
-    ai_validation_model: str = "gemini-3.1-flash-lite-preview"
+    ai_validation_model: str = "gemini-1.5-flash"
 
     class Config:
         env_file = ".env"
