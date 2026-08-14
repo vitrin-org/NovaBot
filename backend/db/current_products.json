@@ -1,0 +1,242 @@
+[
+  {
+    "product_id": "pp-17",
+    "name": "تست",
+    "summary": "",
+    "full_description": "",
+    "categories": [
+      "healthcare"
+    ],
+    "sponsor_tier": 3,
+    "pricing_type": "free",
+    "target_audience": "سلام متن تست",
+    "productplus_metadata": {
+      "project_id": 17,
+      "slug": "tst-yxfode",
+      "stage": "فناوری سلامت",
+      "status": "published",
+      "funding_required": 0,
+      "source": "productplus-db"
+    }
+  },
+  {
+    "product_id": "pp-16",
+    "name": "lpw,g kfdc",
+    "summary": "احداث کارخانه مونتاژ خودرو در منطقه آزاد اینچه‌برون\r\n\r\nشرکت هیربد دیزل موتور با هدف توسعه صنعت خودروسازی کشور، در حال برنامه‌ریزی برای احداث کارخانه مونتاژ خودروهای سبک، نیمه‌سنگین و سنگین در منطقه آزاد اینچه‌برون است. این پروژه با بهره‌گیری از موقعیت استراتژیک منطقه، دسترسی به کریدورهای بین‌المللی، زیرساخت‌های حمل‌ونقل و مشوق‌های سرمایه‌گذاری، زمینه تولید، صادرات و توسعه بازارهای منطقه‌ای را فراهم می‌کند.",
+    "full_description": "FAW Vehicle Dealership – Over 10 Years of Experience\r\n\r\nWith more than 10 years of experience as an authorized FAW dealership, Hirbod Diesel Motor provides commercial vehicle sales, genuine FAW spare parts, after-sales services, and professional technical support across Iran.\r\n\r\nBeyond vehicle sales, we focus on building long-term partnerships by helping customers reduce maintenance costs, improve fleet performance, and ensure reliable vehicle operation. Our direct import of genuine FAW spare parts guarantees authentic components, competitive pricing, fast delivery, and a stable supply chain.\r\n\r\nOur services include commercial vehicle sales, spare parts supply, after-sales services, technical consultation, fleet support, and ongoing customer assistance. Backed by extensive industry experience, a global supplier network, and a skilled technical team, we are committed to delivering reliable solutions and exceptional customer service for transportation companies, fleet owners, and commercial vehicle operators.",
+    "categories": [
+      "healthcare"
+    ],
+    "sponsor_tier": 3,
+    "pricing_type": "free",
+    "target_audience": "نمایندگی خودروهای فاو (FAW)\r\n\r\nشرکت هیربد دیزل موتور با بیش از ۱۰ سال تجربه در حوزه خودروهای تجاری فاو، خدمات فروش، تأمین قطعات یدکی اصلی، خدمات پس از فروش و پشتیبانی فنی را در سراسر ایران ارائه می‌دهد. با بهره‌گیری از شبکه تأمین مستقیم و تیمی متخصص، همواره در کنار مشتریان هستیم تا با ارائه راهکارهای مطمئن، بهره‌وری ناوگان و رضایت مشتریان را افزایش دهیم.",
+    "productplus_metadata": {
+      "project_id": 16,
+      "slug": "lpwg-kfdc-mtrhmg",
+      "stage": "کلینیک آنلاین، سلامت سازمانی، تحلیل داده سلامت",
+      "status": "published",
+      "funding_required": 0,
+      "source": "productplus-db"
+    }
+  },
+  {
+    "product_id": "pp-5",
+    "name": "مسیر درمان",
+    "summary": "داشبورد پیگیری ارجاع، نوبت‌دهی و مسیر درمان برای کلینیک‌های تخصصی.",
+    "full_description": "مسیر درمان اطلاعات پذیرش، ارجاع، نوبت و پیگیری بیمار را برای شبکه‌های کلینیکی قابل گزارش و قابل کنترل می‌کند.",
+    "categories": [
+      "healthcare"
+    ],
+    "sponsor_tier": 3,
+    "pricing_type": "subscription",
+    "target_audience": "سرمایه‌گذار آشنا با فروش به مراکز درمانی، داده سلامت و الزامات محرمانگی",
+    "productplus_metadata": {
+      "project_id": 5,
+      "slug": "medroute-cloud",
+      "stage": "تحلیل داده سلامت",
+      "status": "published",
+      "funding_required": 21000000000,
+      "source": "productplus-db"
+    }
+  },
+  {
+    "product_id": "pp-1",
+    "name": "نبض نیرو",
+    "summary": "سامانه پایش رضایت و فرسودگی نیروی انسانی برای شرکت‌های ۵۰ تا ۵۰۰ نفره.",
+    "full_description": "نبض نیرو داده‌های حضور، بازخوردهای کوتاه و شاخص‌های منابع انسانی را به گزارش قابل اقدام برای مدیرعامل و مدیر منابع انسانی تبدیل می‌کند.",
+    "categories": [
+      "hr"
+    ],
+    "sponsor_tier": 3,
+    "pricing_type": "subscription",
+    "target_audience": "سرمایه‌گذار آشنا با فروش سازمانی، منابع انسانی و بازار نرم‌افزارهای شرکتی ایران",
+    "productplus_metadata": {
+      "project_id": 1,
+      "slug": "pulsehr",
+      "stage": "سنجش عملکرد تیم",
+      "status": "published",
+      "funding_required": 18000000000,
+      "source": "productplus-db"
+    }
+  },
+  {
+    "product_id": "pp-7",
+    "name": "دفتر پرداخت",
+    "summary": "تطبیق تراکنش، فاکتور و تسویه برای شرکت‌های پخش و فروش B2B.",
+    "full_description": "دفتر پرداخت مغایرت‌های بانکی، فاکتورهای باز و وضعیت تسویه مشتریان عمده را برای تیم مالی قابل پیگیری می‌کند.",
+    "categories": [
+      "fintech"
+    ],
+    "sponsor_tier": 3,
+    "pricing_type": "subscription",
+    "target_audience": "اپراتور سرمایه‌گذار با سابقه پرداخت، نرم‌افزار مالی و کنترل‌های حسابداری",
+    "productplus_metadata": {
+      "project_id": 7,
+      "slug": "ledgerpilot",
+      "stage": "عملیات پرداخت",
+      "status": "published",
+      "funding_required": 15000000000,
+      "source": "productplus-db"
+    }
+  },
+  {
+    "product_id": "pp-13",
+    "name": "همکارنو",
+    "summary": "اتوماسیون جذب، شروع همکاری و فرم‌های منابع انسانی برای شرکت‌های در حال رشد.",
+    "full_description": "همکارنو گردش کار جذب، قرارداد، شروع همکاری و درخواست‌های داخلی کارکنان را برای تیم منابع انسانی کوچک‌تر و قابل پیگیری‌تر می‌کند.",
+    "categories": [
+      "hr"
+    ],
+    "sponsor_tier": 1,
+    "pricing_type": "subscription",
+    "target_audience": "سرمایه‌گذار نرم‌افزار سازمانی با شناخت از عملیات داخلی شرکت‌های رشدکرده و فروش اشتراکی",
+    "productplus_metadata": {
+      "project_id": 13,
+      "slug": "talentgrid",
+      "stage": "اتوماسیون عملیات HR",
+      "status": "scheduled",
+      "funding_required": 12500000000,
+      "source": "productplus-db"
+    }
+  },
+  {
+    "product_id": "pp-12",
+    "name": "نشان قفسه",
+    "summary": "تحلیل فروش، چیدمان قفسه و اثربخشی پروموشن برای برندهای تندمصرف.",
+    "full_description": "نشان قفسه داده فروش فروشگاهی، باشگاه مشتریان و بازخورد تیم ویزیت را تجمیع می‌کند تا برندها تصمیم دقیق‌تری برای چیدمان و پروموشن بگیرند.",
+    "categories": [
+      "e-commerce"
+    ],
+    "sponsor_tier": 2,
+    "pricing_type": "subscription",
+    "target_audience": "سرمایه‌گذار consumer-tech با دسترسی به برندهای FMCG و تجربه رشد داده‌محور",
+    "productplus_metadata": {
+      "project_id": 12,
+      "slug": "shelfsignal",
+      "stage": "هوش مشتری",
+      "status": "published",
+      "funding_required": 14500000000,
+      "source": "productplus-db"
+    }
+  },
+  {
+    "product_id": "pp-3",
+    "name": "درخواست راه‌اندازی عملیات خرده‌فروشی",
+    "summary": "شرح نیاز سرمایه‌گذار برای تیم عملیاتی فروشگاه‌های محلی و سفارش‌گیری چندکاناله.",
+    "full_description": "این درخواست برای تشکیل تیم اجرایی در حوزه خرده‌فروشی محلی منتشر شده و روی تامین کالا، پخش شهری و فروش آنلاین تمرکز دارد.",
+    "categories": [
+      "e-commerce"
+    ],
+    "sponsor_tier": 2,
+    "pricing_type": "subscription",
+    "target_audience": "تیم اجرایی با تجربه سوپرمارکت آنلاین، پخش مویرگی یا فروشگاه‌های زنجیره‌ای کوچک",
+    "productplus_metadata": {
+      "project_id": 3,
+      "slug": "retail-ops-request",
+      "stage": "کامرس چندکاناله",
+      "status": "published",
+      "funding_required": 12000000000,
+      "source": "productplus-db"
+    }
+  },
+  {
+    "product_id": "pp-8",
+    "name": "درخواست دفتر کربن",
+    "summary": "نیاز به تیم محصول برای ثبت مصرف انرژی و گزارش کربن در کارخانه‌های متوسط.",
+    "full_description": "سرمایه‌گذار به دنبال تیمی است که بتواند داده مصرف انرژی، گزارش کاهش آلایندگی و پرونده اعتبار کربن را برای صنایع ایرانی محصول‌سازی کند.",
+    "categories": [
+      "climate"
+    ],
+    "sponsor_tier": 1,
+    "pricing_type": "subscription",
+    "target_audience": "تیم فنی و صنعتی با دسترسی به کارخانه‌های انرژی‌بر و تجربه داده‌برداری میدانی",
+    "productplus_metadata": {
+      "project_id": 8,
+      "slug": "carbon-ledger-request",
+      "stage": "مدیریت کربن",
+      "status": "scheduled",
+      "funding_required": 26000000000,
+      "source": "productplus-db"
+    }
+  },
+  {
+    "product_id": "pp-11",
+    "name": "میز ارزیابی سرمایه",
+    "summary": "درخواست ساخت ابزار ارزیابی، امتیازدهی و پیگیری تیم‌های سرمایه‌پذیر.",
+    "full_description": "این درخواست روی مدیریت پایپ‌لاین ارزیابی، چک‌لیست سرمایه‌گذاری، امتیازدهی اولیه و نگهداری دیتاروم تیم‌ها تمرکز دارد.",
+    "categories": [
+      "fintech"
+    ],
+    "sponsor_tier": 2,
+    "pricing_type": "subscription",
+    "target_audience": "هم‌بنیان‌گذار محصولی با تجربه ابزارهای عملیاتی، مالی و گزارش‌گیری سرمایه‌گذاری",
+    "productplus_metadata": {
+      "project_id": 11,
+      "slug": "due-diligence-desk",
+      "stage": "هوش سرمایه‌گذاری",
+      "status": "published",
+      "funding_required": 17000000000,
+      "source": "productplus-db"
+    }
+  },
+  {
+    "product_id": "pp-14",
+    "name": "درخواست توسعه شبکه کلینیک",
+    "summary": "نیاز به تیم اجرایی برای توسعه شبکه کلینیک تخصصی و خدمات سلامت سازمانی.",
+    "full_description": "این درخواست برای یافتن تیمی منتشر شده که بتواند عملیات کلینیک، فروش سازمانی و داشبورد سلامت کارکنان را هم‌زمان اجرا کند.",
+    "categories": [
+      "healthcare"
+    ],
+    "sponsor_tier": 2,
+    "pricing_type": "subscription",
+    "target_audience": "تیم اجرایی آشنا با عملیات کلینیک، فروش سازمانی و توسعه مشارکت‌های درمانی",
+    "productplus_metadata": {
+      "project_id": 14,
+      "slug": "clinic-rollup-brief",
+      "stage": "سلامت سازمانی",
+      "status": "published",
+      "funding_required": 22000000000,
+      "source": "productplus-db"
+    }
+  },
+  {
+    "product_id": "pp-2",
+    "name": "زنجیره‌یار",
+    "summary": "مدیریت سفارش، اعتبار خرید و پیگیری تامین برای کارگاه‌های قطعه‌سازی و تولیدی.",
+    "full_description": "زنجیره‌یار سفارش‌های عمده، وضعیت تامین مواد اولیه و تسویه بین کارگاه و تامین‌کننده را در یک پنل عملیاتی جمع می‌کند.",
+    "categories": [
+      "supply-chain"
+    ],
+    "sponsor_tier": 1,
+    "pricing_type": "subscription",
+    "target_audience": "سرمایه‌گذار صنعتی با ارتباط در شهرک‌های صنعتی و تجربه تامین مالی زنجیره تامین",
+    "productplus_metadata": {
+      "project_id": 2,
+      "slug": "forgechain",
+      "stage": "زنجیره تامین",
+      "status": "scheduled",
+      "funding_required": 24000000000,
+      "source": "productplus-db"
+    }
+  }
+]

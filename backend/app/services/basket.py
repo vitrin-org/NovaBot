@@ -40,6 +40,8 @@ basket_prompt = ChatPromptTemplate.from_messages([
         """نیازهای کاربر:
 - صنعت: {industry}
 - چالش اصلی: {challenge}
+- نقش کاربر: {role}
+- اندازه تیم: {team_size}
 - محدوده بودجه: {budget}
 
 محصولات موجود (فقط این‌ها را استفاده کنید):
@@ -74,6 +76,8 @@ def generate_basket(
         "brand_name": settings.brand_name,
         "industry": quiz.get("industry", ""),
         "challenge": quiz.get("challenge", ""),
+        "role": quiz.get("role", ""),
+        "team_size": quiz.get("team_size", ""),
         "budget": quiz.get("budget", ""),
         "products": products_text,
     })

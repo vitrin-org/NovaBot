@@ -39,21 +39,25 @@ class VectorStore:
             text = f"{p['name']} {p.get('summary', '')} {p.get('full_description', '')}"
             vector = embed(text)
             point_id = str(uuid.uuid5(uuid.NAMESPACE_DNS, p["product_id"]))
+            payload = {
+                "product_id": p["product_id"],
+                "name": p["name"],
+                "summary": p.get("summary", ""),
+                "full_description": p.get("full_description", ""),
+                "categories": p.get("categories", []),
+                "sponsor_tier": p.get("sponsor_tier", 0),
+                "pricing_type": p.get("pricing_type", "free"),
+                "target_audience": p.get("target_audience", ""),
+            }
+            if "productplus_metadata" in p:
+                payload["productplus_metadata"] = p["productplus_metadata"]
+            if "source" in p:
+                payload["source"] = p["source"]
             points.append(
                 PointStruct(
                     id=point_id,
                     vector=vector,
-                    payload={
-                        "product_id": p["product_id"],
-                        "name": p["name"],
-                        "summary": p.get("summary", ""),
-                        "full_description": p.get("full_description", ""),
-                        "categories": p.get("categories", []),
-                        "budget_tier": p.get("budget_tier", 0),
-                        "sponsor_tier": p.get("sponsor_tier", 0),
-                        "pricing_type": p.get("pricing_type", "free"),
-                        "target_audience": p.get("target_audience", ""),
-                    },
+                    payload=payload,
                 )
             )
         self.client.upsert(collection_name=COLLECTION_NAME, points=points)
@@ -66,23 +70,34 @@ class VectorStore:
     ) -> list[dict]:
         query_filter = None
         if filters:
-            conditions = []
+            must_conditions = []
             if filters.get("category"):
-                conditions.append(
+                must_conditions.append(
                     FieldCondition(
                         key="categories",
                         match=MatchValue(value=filters["category"]),
                     )
                 )
-            if filters.get("budget_tier") is not None:
-                conditions.append(
+            if filters.get("pricing_type"):
+                must_conditions.append(
                     FieldCondition(
-                        key="budget_tier",
-                        match=MatchValue(value=filters["budget_tier"]),
+                        key="pricing_type",
+                        match=MatchValue(value=filters["pricing_type"]),
                     )
                 )
-            if conditions:
-                query_filter = Filter(must=conditions)
+
+            must_not_conditions = []
+            if filters.get("must_not"):
+                for key, value in filters["must_not"].items():
+                    must_not_conditions.append(
+                        FieldCondition(
+                            key=key,
+                            match=MatchValue(value=value),
+                        )
+                    )
+
+            if must_conditions or must_not_conditions:
+                query_filter = Filter(must=must_conditions, must_not=must_not_conditions)
 
         results = self.client.query_points(
             collection_name=COLLECTION_NAME,
@@ -98,7 +113,6 @@ class VectorStore:
                 "summary": r.payload["summary"],
                 "full_description": r.payload["full_description"],
                 "categories": r.payload["categories"],
-                "budget_tier": r.payload["budget_tier"],
                 "sponsor_tier": r.payload["sponsor_tier"],
                 "pricing_type": r.payload["pricing_type"],
                 "target_audience": r.payload["target_audience"],

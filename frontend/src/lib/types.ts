@@ -1,7 +1,10 @@
 export interface QuizData {
   industry: string;
+  category: string;
   challenge: string;
-  budget: string;
+  budget: "free" | "paid";
+  role: string;
+  team_size: string;
 }
 
 export interface ProductItem {

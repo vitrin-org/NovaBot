@@ -62,9 +62,6 @@ novabot/
     "name": "string",
     "summary": "string",
     "full_description": "string",
-    "categories": ["string"],
-    "budget_tier": 0,
-    "sponsor_tier": 0,
     "pricing_type": "string",
     "target_audience": "string"
   }
@@ -80,7 +77,6 @@ novabot/
 | `summary` | string | خلاصه کوتاه (۱-۲ جمله) |
 | `full_description` | string | توضیح کامل محصول |
 | `categories` | string[] | دسته‌بندی‌ها (مثلاً `["project-management", "productivity"]`) |
-| `budget_tier` | int | سطح بودجه: 0=رایگان, 1=ارزان, 2=متوسط, 3=گران |
 | `sponsor_tier` | int | سطح حمایت مالی: 0=عادی, 1=برنزی, 2=طلایی, 3=پلاتینی |
 | `pricing_type` | string | نوع قیمت: `free`, `freemium`, `subscription`, `pay-per-use` |
 | `target_audience` | string | مخاطب هدف |
@@ -307,8 +303,9 @@ Content-Type: application/json
 
 {
   "industry": "برنامه‌نویسی",
+  "category": "developer-tools",
   "challenge": "بررسی کد",
-  "budget": "۲ تا ۸ میلیون تومان"
+  "budget": "paid"
 }
 
 Response:

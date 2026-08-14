@@ -175,6 +175,11 @@ export default function ChatWidget() {
     }
   };
 
+  const handleFeedback = (productId: string, feedback: "up" | "down") => {
+    console.log("Feedback:", productId, feedback);
+    // TODO: send to API
+  };
+
   const handleSend = async () => {
     if (!input.trim() || loading) return;
     const userMsg = input.trim();
@@ -288,7 +293,7 @@ export default function ChatWidget() {
         {phase === "quiz" && <OnboardingQuiz onComplete={handleQuizComplete} />}
 
         {phase === "basket" && basket && (
-          <BasketDisplay basket={basket} />
+          <BasketDisplay basket={basket} onFeedback={handleFeedback} />
         )}
 
         {messages.map((msg, i) => (

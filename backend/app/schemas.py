@@ -3,8 +3,11 @@ from pydantic import BaseModel
 
 class QuizResponse(BaseModel):
     industry: str
+    category: str
     challenge: str
     budget: str
+    role: str = ""
+    team_size: str = ""
 
 
 class ProductItem(BaseModel):

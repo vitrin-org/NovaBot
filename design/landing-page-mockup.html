@@ -111,6 +111,21 @@
         .mfill { height: 100%; background: #3b82f6; border-radius: 3px; }
         .mpct { font-size: 10px; color: #9ca3af; }
 
+        /* Feedback buttons */
+        .fbrow { display: flex; gap: 5px; margin-top: 8px; border-top: 1px solid #f3f4f6; padding-top: 8px; }
+        .fbbtn {
+            flex: 1;
+            border-radius: 6px;
+            border: 1.5px solid #d1d5db;
+            padding: 4px 6px;
+            font-size: 10px;
+            font-weight: 600;
+            cursor: pointer;
+            text-align: center;
+        }
+        .fbbtn.up { background: #ecfdf5; border-color: #6ee7b7; color: #065f46; }
+        .fbbtn.down { background: #fef2f2; border-color: #fca5a5; color: #991b1b; }
+
         .cost { background: #f9fafb; border-radius: 8px; padding: 8px 12px; display: flex; justify-content: space-between; }
         .cl { font-size: 11px; color: #9ca3af; }
         .cv { font-size: 12px; font-weight: 700; color: #374151; }
@@ -171,6 +186,10 @@
                     <div class="mbar"><div class="mfill" style="width:85%"></div></div>
                     <span class="mpct">۸۵٪</span>
                 </div>
+                <div class="fbrow">
+                    <div class="fbbtn up">مفید</div>
+                    <div class="fbbtn down">غیر مناسب</div>
+                </div>
             </div>
 
             <div class="pcard">
@@ -183,6 +202,10 @@
                 <div class="mrow">
                     <div class="mbar"><div class="mfill" style="width:78%"></div></div>
                     <span class="mpct">۷۸٪</span>
+                </div>
+                <div class="fbrow">
+                    <div class="fbbtn up">مفید</div>
+                    <div class="fbbtn down">غیر مناسب</div>
                 </div>
             </div>
 
