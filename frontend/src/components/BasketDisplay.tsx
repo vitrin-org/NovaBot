@@ -5,9 +5,10 @@ import ProductCard from "./ProductCard";
 
 interface BasketDisplayProps {
   basket: ProductBasket;
+  onFeedback?: (productId: string, feedback: "up" | "down") => void;
 }
 
-export default function BasketDisplay({ basket }: BasketDisplayProps) {
+export default function BasketDisplay({ basket, onFeedback }: BasketDisplayProps) {
   return (
     <div className="space-y-4" dir="rtl">
       <div className="rounded-xl bg-gradient-to-bl from-primary-50 to-white p-4">
@@ -19,7 +20,7 @@ export default function BasketDisplay({ basket }: BasketDisplayProps) {
 
       <div className="space-y-3">
         {basket.selected_products.map((product) => (
-          <ProductCard key={product.product_id} product={product} />
+          <ProductCard key={product.product_id} product={product} onFeedback={onFeedback} />
         ))}
       </div>
 

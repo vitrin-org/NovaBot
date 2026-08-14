@@ -4,6 +4,7 @@ import { ProductItem } from "@/lib/types";
 
 interface ProductCardProps {
   product: ProductItem;
+  onFeedback?: (productId: string, feedback: "up" | "down") => void;
 }
 
 const CATEGORY_LABELS: Record<string, string> = {
@@ -38,7 +39,7 @@ const CATEGORY_LABELS: Record<string, string> = {
   "e-commerce": "فروشگاه آنلاین",
 };
 
-export default function ProductCard({ product }: ProductCardProps) {
+export default function ProductCard({ product, onFeedback }: ProductCardProps) {
   const categoryLabel = CATEGORY_LABELS[product.category] || product.category;
 
   return (
@@ -92,6 +93,23 @@ export default function ProductCard({ product }: ProductCardProps) {
           {Math.round(product.match_score * 100)}٪
         </span>
       </div>
+
+      {onFeedback && (
+        <div className="mt-3 flex gap-2 pt-3 border-t border-gray-100">
+          <button
+            onClick={() => onFeedback(product.product_id, "up")}
+            className="flex-1 rounded-lg border border-green-300 bg-green-50 px-3 py-1.5 text-[12px] font-medium text-green-700 hover:bg-green-100 transition"
+          >
+            مفید
+          </button>
+          <button
+            onClick={() => onFeedback(product.product_id, "down")}
+            className="flex-1 rounded-lg border border-red-300 bg-red-50 px-3 py-1.5 text-[12px] font-medium text-red-700 hover:bg-red-100 transition"
+          >
+            مربوط نیست
+          </button>
+        </div>
+      )}
     </div>
   );
 }

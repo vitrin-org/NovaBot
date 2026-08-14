@@ -1,283 +1,242 @@
 [
   {
-    "product_id": "p001",
-    "name": "TaskFlow Pro",
-    "summary": "Project management tool for remote teams with AI-powered task prioritization.",
-    "full_description": "TaskFlow Pro is a comprehensive project management solution designed for distributed teams. It uses AI to automatically prioritize tasks based on deadlines, dependencies, and team capacity. Features include Gantt charts, Kanban boards, time tracking, and automated status reports. Integrates with Slack, GitHub, and Jira.",
+    "product_id": "pp-17",
+    "name": "تست",
+    "summary": "",
+    "full_description": "",
     "categories": [
-      "project-management",
-      "productivity"
+      "healthcare"
     ],
-    "budget_tier": 2,
     "sponsor_tier": 3,
-    "pricing_type": "subscription",
-    "target_audience": "remote teams"
-  },
-  {
-    "product_id": "p002",
-    "name": "CloudDeploy",
-    "summary": "One-click deployment platform for Python and Node.js applications.",
-    "full_description": "CloudDeploy simplifies the deployment process for web applications. Deploy Python (Django, Flask, FastAPI) and Node.js apps with a single command. Features include automatic SSL, custom domains, scaling, CI/CD pipelines, and monitoring dashboards. Supports PostgreSQL, MongoDB, and Redis databases.",
-    "categories": [
-      "devops",
-      "cloud"
-    ],
-    "budget_tier": 2,
-    "sponsor_tier": 2,
-    "pricing_type": "pay-per-use",
-    "target_audience": "developers"
-  },
-  {
-    "product_id": "p003",
-    "name": "InsightAI",
-    "summary": "Business intelligence dashboard with natural language querying.",
-    "full_description": "InsightAI transforms raw data into actionable insights. Ask questions in plain English and get instant visualizations. Connects to any SQL database, CSV, or API. Features include automated report generation, anomaly detection, and predictive analytics. No coding required.",
-    "categories": [
-      "analytics",
-      "business-intelligence"
-    ],
-    "budget_tier": 3,
-    "sponsor_tier": 1,
-    "pricing_type": "subscription",
-    "target_audience": "business analysts"
-  },
-  {
-    "product_id": "p004",
-    "name": "SecureVault",
-    "summary": "Enterprise-grade secret management and API key rotation.",
-    "full_description": "SecureVault provides zero-trust secret management for development teams. Automatically rotate API keys, database credentials, and certificates. Features include audit logs, access policies, compliance reporting, and integration with AWS Secrets Manager and HashiCorp Vault.",
-    "categories": [
-      "security",
-      "devops"
-    ],
-    "budget_tier": 2,
-    "sponsor_tier": 0,
-    "pricing_type": "subscription",
-    "target_audience": "DevOps engineers"
-  },
-  {
-    "product_id": "p005",
-    "name": "FormBuilder",
-    "summary": "Drag-and-drop form builder with conditional logic and integrations.",
-    "full_description": "FormBuilder lets you create complex forms without code. Features include conditional logic, file uploads, payment collection (Stripe), multi-step forms, and real-time collaboration. Responses sync automatically to Google Sheets, Airtable, or your database.",
-    "categories": [
-      "no-code",
-      "productivity"
-    ],
-    "budget_tier": 1,
-    "sponsor_tier": 0,
-    "pricing_type": "freemium",
-    "target_audience": "small businesses"
-  },
-  {
-    "product_id": "p006",
-    "name": "ChatAssist",
-    "summary": "AI customer support chatbot with knowledge base integration.",
-    "full_description": "ChatAssist handles customer inquiries 24/7 using AI. Train it on your documentation, FAQs, and support tickets. Features include sentiment analysis, seamless handoff to human agents, multi-language support, and analytics dashboard. Reduces support tickets by up to 60%.",
-    "categories": [
-      "customer-support",
-      "ai"
-    ],
-    "budget_tier": 2,
-    "sponsor_tier": 3,
-    "pricing_type": "subscription",
-    "target_audience": "e-commerce businesses"
-  },
-  {
-    "product_id": "p007",
-    "name": "DataPipe",
-    "summary": "ETL pipeline builder for syncing data between SaaS tools.",
-    "full_description": "DataPipe automates data synchronization between popular SaaS tools. Connect Salesforce, HubSpot, Stripe, and 50+ other services. Features include real-time syncing, data transformation, error handling, and monitoring. No-code interface with advanced scripting for power users.",
-    "categories": [
-      "data-integration",
-      "etl"
-    ],
-    "budget_tier": 2,
-    "sponsor_tier": 1,
-    "pricing_type": "pay-per-use",
-    "target_audience": "data engineers"
-  },
-  {
-    "product_id": "p008",
-    "name": "DesignKit",
-    "summary": "Collaborative design tool with AI-generated mockups and prototypes.",
-    "full_description": "DesignKit combines design and prototyping in one tool. Generate UI mockups from text descriptions, create interactive prototypes, and collaborate in real-time. Features include component libraries, design tokens, version history, and developer handoff with code export.",
-    "categories": [
-      "design",
-      "collaboration"
-    ],
-    "budget_tier": 2,
-    "sponsor_tier": 2,
-    "pricing_type": "freemium",
-    "target_audience": "design teams"
-  },
-  {
-    "product_id": "p009",
-    "name": "PayFlow",
-    "summary": "Subscription billing and revenue recognition platform.",
-    "full_description": "PayFlow handles the entire subscription lifecycle. Manage plans, trials, upgrades, and cancellations. Features include automatic invoicing, dunning management, revenue recognition (ASC 606), tax compliance, and detailed financial reporting. Integrates with Stripe, PayPal, and bank accounts.",
-    "categories": [
-      "fintech",
-      "billing"
-    ],
-    "budget_tier": 3,
-    "sponsor_tier": 1,
-    "pricing_type": "subscription",
-    "target_audience": "SaaS companies"
-  },
-  {
-    "product_id": "p010",
-    "name": "CodeReview AI",
-    "summary": "Automated code review tool that catches bugs and suggests improvements.",
-    "full_description": "CodeReview AI analyzes pull requests automatically. It catches security vulnerabilities, performance issues, and code smells. Features include custom rule sets, team coding standards enforcement, and integration with GitHub, GitLab, and Bitbucket. Supports 15+ programming languages.",
-    "categories": [
-      "developer-tools",
-      "code-quality"
-    ],
-    "budget_tier": 1,
-    "sponsor_tier": 0,
-    "pricing_type": "freemium",
-    "target_audience": "development teams"
-  },
-  {
-    "product_id": "p011",
-    "name": "MailCraft",
-    "summary": "Email marketing automation with AI-powered subject lines and A/B testing.",
-    "full_description": "MailCraft makes email marketing effortless. Design beautiful emails with a drag-and-drop editor, segment audiences, and automate campaigns. Features include AI-generated subject lines, predictive send-time optimization, A/B testing, and detailed analytics.",
-    "categories": [
-      "marketing",
-      "email"
-    ],
-    "budget_tier": 1,
-    "sponsor_tier": 0,
-    "pricing_type": "freemium",
-    "target_audience": "marketers"
-  },
-  {
-    "product_id": "p012",
-    "name": "APIGateway",
-    "summary": "Unified API management platform with rate limiting and analytics.",
-    "full_description": "APIGateway centralizes API management for microservices architectures. Features include rate limiting, authentication, request transformation, caching, and real-time analytics. Supports REST, GraphQL, and gRPC. Includes a developer portal for API documentation.",
-    "categories": [
-      "api",
-      "infrastructure"
-    ],
-    "budget_tier": 3,
-    "sponsor_tier": 2,
-    "pricing_type": "pay-per-use",
-    "target_audience": "backend developers"
-  },
-  {
-    "product_id": "p013",
-    "name": "TestBot",
-    "summary": "Automated QA testing platform with visual regression detection.",
-    "full_description": "TestBot automates end-to-end testing for web applications. Record tests visually or write them in code. Features include visual regression testing, cross-browser testing, API testing, and CI/CD integration. AI-powered test generation from user flow recordings.",
-    "categories": [
-      "testing",
-      "qa"
-    ],
-    "budget_tier": 2,
-    "sponsor_tier": 0,
-    "pricing_type": "subscription",
-    "target_audience": "QA engineers"
-  },
-  {
-    "product_id": "p014",
-    "name": "MeetSync",
-    "summary": "AI meeting assistant that transcribes, summarizes, and extracts action items.",
-    "full_description": "MeetSync records and transcribes meetings automatically. Get AI-generated summaries, action items, and follow-up emails after every call. Features include speaker identification, custom templates, integration with calendar and project tools, and searchable meeting history.",
-    "categories": [
-      "productivity",
-      "ai"
-    ],
-    "budget_tier": 1,
-    "sponsor_tier": 3,
-    "pricing_type": "freemium",
-    "target_audience": "teams"
-  },
-  {
-    "product_id": "p015",
-    "name": "InfraStack",
-    "summary": "Infrastructure-as-code platform for multi-cloud deployments.",
-    "full_description": "InfraStack provisions and manages cloud infrastructure across AWS, GCP, and Azure. Features include drift detection, cost optimization, compliance scanning, and environment templating. Supports Terraform, Pulumi, and CloudFormation. Includes a visual infrastructure designer.",
-    "categories": [
-      "devops",
-      "cloud"
-    ],
-    "budget_tier": 3,
-    "sponsor_tier": 1,
-    "pricing_type": "subscription",
-    "target_audience": "platform engineers"
-  },
-  {
-    "product_id": "p016",
-    "name": "FeedbackLoop",
-    "summary": "User feedback collection and feature request voting platform.",
-    "full_description": "FeedbackLoop helps product teams gather and prioritize user feedback. Embed widgets in your app for in-context feedback. Features include feature request voting boards, NPS surveys, sentiment analysis, and roadmap publishing. Integrates with Jira, Linear, and Notion.",
-    "categories": [
-      "product-management",
-      "customer-feedback"
-    ],
-    "budget_tier": 1,
-    "sponsor_tier": 0,
-    "pricing_type": "freemium",
-    "target_audience": "product managers"
-  },
-  {
-    "product_id": "p017",
-    "name": "InvoiceGen",
-    "summary": "Automated invoicing and expense tracking for freelancers.",
-    "full_description": "InvoiceGen simplifies financial management for freelancers and small agencies. Create professional invoices, track expenses, and manage payments. Features include automatic payment reminders, multi-currency support, tax calculations, and financial reports.",
-    "categories": [
-      "fintech",
-      "accounting"
-    ],
-    "budget_tier": 0,
-    "sponsor_tier": 0,
     "pricing_type": "free",
-    "target_audience": "freelancers"
+    "target_audience": "سلام متن تست",
+    "productplus_metadata": {
+      "project_id": 17,
+      "slug": "tst-yxfode",
+      "stage": "فناوری سلامت",
+      "status": "published",
+      "funding_required": 0,
+      "source": "productplus-db"
+    }
   },
   {
-    "product_id": "p018",
-    "name": "ContentAI",
-    "summary": "AI content generation and SEO optimization platform.",
-    "full_description": "ContentAI creates blog posts, social media content, and marketing copy using AI. Features include SEO optimization, content scoring, plagiarism detection, and multi-language support. Integrates with WordPress, Webflow, and Shopify for direct publishing.",
+    "product_id": "pp-16",
+    "name": "lpw,g kfdc",
+    "summary": "احداث کارخانه مونتاژ خودرو در منطقه آزاد اینچه‌برون\r\n\r\nشرکت هیربد دیزل موتور با هدف توسعه صنعت خودروسازی کشور، در حال برنامه‌ریزی برای احداث کارخانه مونتاژ خودروهای سبک، نیمه‌سنگین و سنگین در منطقه آزاد اینچه‌برون است. این پروژه با بهره‌گیری از موقعیت استراتژیک منطقه، دسترسی به کریدورهای بین‌المللی، زیرساخت‌های حمل‌ونقل و مشوق‌های سرمایه‌گذاری، زمینه تولید، صادرات و توسعه بازارهای منطقه‌ای را فراهم می‌کند.",
+    "full_description": "FAW Vehicle Dealership – Over 10 Years of Experience\r\n\r\nWith more than 10 years of experience as an authorized FAW dealership, Hirbod Diesel Motor provides commercial vehicle sales, genuine FAW spare parts, after-sales services, and professional technical support across Iran.\r\n\r\nBeyond vehicle sales, we focus on building long-term partnerships by helping customers reduce maintenance costs, improve fleet performance, and ensure reliable vehicle operation. Our direct import of genuine FAW spare parts guarantees authentic components, competitive pricing, fast delivery, and a stable supply chain.\r\n\r\nOur services include commercial vehicle sales, spare parts supply, after-sales services, technical consultation, fleet support, and ongoing customer assistance. Backed by extensive industry experience, a global supplier network, and a skilled technical team, we are committed to delivering reliable solutions and exceptional customer service for transportation companies, fleet owners, and commercial vehicle operators.",
     "categories": [
-      "marketing",
-      "ai",
-      "content"
+      "healthcare"
     ],
-    "budget_tier": 2,
+    "sponsor_tier": 3,
+    "pricing_type": "free",
+    "target_audience": "نمایندگی خودروهای فاو (FAW)\r\n\r\nشرکت هیربد دیزل موتور با بیش از ۱۰ سال تجربه در حوزه خودروهای تجاری فاو، خدمات فروش، تأمین قطعات یدکی اصلی، خدمات پس از فروش و پشتیبانی فنی را در سراسر ایران ارائه می‌دهد. با بهره‌گیری از شبکه تأمین مستقیم و تیمی متخصص، همواره در کنار مشتریان هستیم تا با ارائه راهکارهای مطمئن، بهره‌وری ناوگان و رضایت مشتریان را افزایش دهیم.",
+    "productplus_metadata": {
+      "project_id": 16,
+      "slug": "lpwg-kfdc-mtrhmg",
+      "stage": "کلینیک آنلاین، سلامت سازمانی، تحلیل داده سلامت",
+      "status": "published",
+      "funding_required": 0,
+      "source": "productplus-db"
+    }
+  },
+  {
+    "product_id": "pp-5",
+    "name": "مسیر درمان",
+    "summary": "داشبورد پیگیری ارجاع، نوبت‌دهی و مسیر درمان برای کلینیک‌های تخصصی.",
+    "full_description": "مسیر درمان اطلاعات پذیرش، ارجاع، نوبت و پیگیری بیمار را برای شبکه‌های کلینیکی قابل گزارش و قابل کنترل می‌کند.",
+    "categories": [
+      "healthcare"
+    ],
+    "sponsor_tier": 3,
+    "pricing_type": "subscription",
+    "target_audience": "سرمایه‌گذار آشنا با فروش به مراکز درمانی، داده سلامت و الزامات محرمانگی",
+    "productplus_metadata": {
+      "project_id": 5,
+      "slug": "medroute-cloud",
+      "stage": "تحلیل داده سلامت",
+      "status": "published",
+      "funding_required": 21000000000,
+      "source": "productplus-db"
+    }
+  },
+  {
+    "product_id": "pp-1",
+    "name": "نبض نیرو",
+    "summary": "سامانه پایش رضایت و فرسودگی نیروی انسانی برای شرکت‌های ۵۰ تا ۵۰۰ نفره.",
+    "full_description": "نبض نیرو داده‌های حضور، بازخوردهای کوتاه و شاخص‌های منابع انسانی را به گزارش قابل اقدام برای مدیرعامل و مدیر منابع انسانی تبدیل می‌کند.",
+    "categories": [
+      "hr"
+    ],
+    "sponsor_tier": 3,
+    "pricing_type": "subscription",
+    "target_audience": "سرمایه‌گذار آشنا با فروش سازمانی، منابع انسانی و بازار نرم‌افزارهای شرکتی ایران",
+    "productplus_metadata": {
+      "project_id": 1,
+      "slug": "pulsehr",
+      "stage": "سنجش عملکرد تیم",
+      "status": "published",
+      "funding_required": 18000000000,
+      "source": "productplus-db"
+    }
+  },
+  {
+    "product_id": "pp-7",
+    "name": "دفتر پرداخت",
+    "summary": "تطبیق تراکنش، فاکتور و تسویه برای شرکت‌های پخش و فروش B2B.",
+    "full_description": "دفتر پرداخت مغایرت‌های بانکی، فاکتورهای باز و وضعیت تسویه مشتریان عمده را برای تیم مالی قابل پیگیری می‌کند.",
+    "categories": [
+      "fintech"
+    ],
+    "sponsor_tier": 3,
+    "pricing_type": "subscription",
+    "target_audience": "اپراتور سرمایه‌گذار با سابقه پرداخت، نرم‌افزار مالی و کنترل‌های حسابداری",
+    "productplus_metadata": {
+      "project_id": 7,
+      "slug": "ledgerpilot",
+      "stage": "عملیات پرداخت",
+      "status": "published",
+      "funding_required": 15000000000,
+      "source": "productplus-db"
+    }
+  },
+  {
+    "product_id": "pp-13",
+    "name": "همکارنو",
+    "summary": "اتوماسیون جذب، شروع همکاری و فرم‌های منابع انسانی برای شرکت‌های در حال رشد.",
+    "full_description": "همکارنو گردش کار جذب، قرارداد، شروع همکاری و درخواست‌های داخلی کارکنان را برای تیم منابع انسانی کوچک‌تر و قابل پیگیری‌تر می‌کند.",
+    "categories": [
+      "hr"
+    ],
+    "sponsor_tier": 1,
+    "pricing_type": "subscription",
+    "target_audience": "سرمایه‌گذار نرم‌افزار سازمانی با شناخت از عملیات داخلی شرکت‌های رشدکرده و فروش اشتراکی",
+    "productplus_metadata": {
+      "project_id": 13,
+      "slug": "talentgrid",
+      "stage": "اتوماسیون عملیات HR",
+      "status": "scheduled",
+      "funding_required": 12500000000,
+      "source": "productplus-db"
+    }
+  },
+  {
+    "product_id": "pp-12",
+    "name": "نشان قفسه",
+    "summary": "تحلیل فروش، چیدمان قفسه و اثربخشی پروموشن برای برندهای تندمصرف.",
+    "full_description": "نشان قفسه داده فروش فروشگاهی، باشگاه مشتریان و بازخورد تیم ویزیت را تجمیع می‌کند تا برندها تصمیم دقیق‌تری برای چیدمان و پروموشن بگیرند.",
+    "categories": [
+      "e-commerce"
+    ],
     "sponsor_tier": 2,
     "pricing_type": "subscription",
-    "target_audience": "content creators"
+    "target_audience": "سرمایه‌گذار consumer-tech با دسترسی به برندهای FMCG و تجربه رشد داده‌محور",
+    "productplus_metadata": {
+      "project_id": 12,
+      "slug": "shelfsignal",
+      "stage": "هوش مشتری",
+      "status": "published",
+      "funding_required": 14500000000,
+      "source": "productplus-db"
+    }
   },
   {
-    "product_id": "p019",
-    "name": "StoreKit",
-    "summary": "E-commerce storefront builder with inventory and order management.",
-    "full_description": "StoreKit lets you launch an online store in minutes. Features include inventory management, order processing, shipping integration, payment processing, and analytics. Supports physical and digital products. Includes mobile-responsive storefront templates.",
+    "product_id": "pp-3",
+    "name": "درخواست راه‌اندازی عملیات خرده‌فروشی",
+    "summary": "شرح نیاز سرمایه‌گذار برای تیم عملیاتی فروشگاه‌های محلی و سفارش‌گیری چندکاناله.",
+    "full_description": "این درخواست برای تشکیل تیم اجرایی در حوزه خرده‌فروشی محلی منتشر شده و روی تامین کالا، پخش شهری و فروش آنلاین تمرکز دارد.",
     "categories": [
-      "e-commerce",
-      "no-code"
+      "e-commerce"
     ],
-    "budget_tier": 2,
-    "sponsor_tier": 0,
+    "sponsor_tier": 2,
     "pricing_type": "subscription",
-    "target_audience": "small businesses"
+    "target_audience": "تیم اجرایی با تجربه سوپرمارکت آنلاین، پخش مویرگی یا فروشگاه‌های زنجیره‌ای کوچک",
+    "productplus_metadata": {
+      "project_id": 3,
+      "slug": "retail-ops-request",
+      "stage": "کامرس چندکاناله",
+      "status": "published",
+      "funding_required": 12000000000,
+      "source": "productplus-db"
+    }
   },
   {
-    "product_id": "p020",
-    "name": "AuthShield",
-    "summary": "Zero-config authentication and authorization service.",
-    "full_description": "AuthShield provides complete authentication infrastructure. Supports email/password, social login, SSO, and MFA out of the box. Features include user management, role-based access control, session management, and compliance with SOC2 and GDPR.",
+    "product_id": "pp-8",
+    "name": "درخواست دفتر کربن",
+    "summary": "نیاز به تیم محصول برای ثبت مصرف انرژی و گزارش کربن در کارخانه‌های متوسط.",
+    "full_description": "سرمایه‌گذار به دنبال تیمی است که بتواند داده مصرف انرژی، گزارش کاهش آلایندگی و پرونده اعتبار کربن را برای صنایع ایرانی محصول‌سازی کند.",
     "categories": [
-      "security",
-      "developer-tools"
+      "climate"
     ],
-    "budget_tier": 1,
     "sponsor_tier": 1,
-    "pricing_type": "freemium",
-    "target_audience": "developers"
+    "pricing_type": "subscription",
+    "target_audience": "تیم فنی و صنعتی با دسترسی به کارخانه‌های انرژی‌بر و تجربه داده‌برداری میدانی",
+    "productplus_metadata": {
+      "project_id": 8,
+      "slug": "carbon-ledger-request",
+      "stage": "مدیریت کربن",
+      "status": "scheduled",
+      "funding_required": 26000000000,
+      "source": "productplus-db"
+    }
+  },
+  {
+    "product_id": "pp-11",
+    "name": "میز ارزیابی سرمایه",
+    "summary": "درخواست ساخت ابزار ارزیابی، امتیازدهی و پیگیری تیم‌های سرمایه‌پذیر.",
+    "full_description": "این درخواست روی مدیریت پایپ‌لاین ارزیابی، چک‌لیست سرمایه‌گذاری، امتیازدهی اولیه و نگهداری دیتاروم تیم‌ها تمرکز دارد.",
+    "categories": [
+      "fintech"
+    ],
+    "sponsor_tier": 2,
+    "pricing_type": "subscription",
+    "target_audience": "هم‌بنیان‌گذار محصولی با تجربه ابزارهای عملیاتی، مالی و گزارش‌گیری سرمایه‌گذاری",
+    "productplus_metadata": {
+      "project_id": 11,
+      "slug": "due-diligence-desk",
+      "stage": "هوش سرمایه‌گذاری",
+      "status": "published",
+      "funding_required": 17000000000,
+      "source": "productplus-db"
+    }
+  },
+  {
+    "product_id": "pp-14",
+    "name": "درخواست توسعه شبکه کلینیک",
+    "summary": "نیاز به تیم اجرایی برای توسعه شبکه کلینیک تخصصی و خدمات سلامت سازمانی.",
+    "full_description": "این درخواست برای یافتن تیمی منتشر شده که بتواند عملیات کلینیک، فروش سازمانی و داشبورد سلامت کارکنان را هم‌زمان اجرا کند.",
+    "categories": [
+      "healthcare"
+    ],
+    "sponsor_tier": 2,
+    "pricing_type": "subscription",
+    "target_audience": "تیم اجرایی آشنا با عملیات کلینیک، فروش سازمانی و توسعه مشارکت‌های درمانی",
+    "productplus_metadata": {
+      "project_id": 14,
+      "slug": "clinic-rollup-brief",
+      "stage": "سلامت سازمانی",
+      "status": "published",
+      "funding_required": 22000000000,
+      "source": "productplus-db"
+    }
+  },
+  {
+    "product_id": "pp-2",
+    "name": "زنجیره‌یار",
+    "summary": "مدیریت سفارش، اعتبار خرید و پیگیری تامین برای کارگاه‌های قطعه‌سازی و تولیدی.",
+    "full_description": "زنجیره‌یار سفارش‌های عمده، وضعیت تامین مواد اولیه و تسویه بین کارگاه و تامین‌کننده را در یک پنل عملیاتی جمع می‌کند.",
+    "categories": [
+      "supply-chain"
+    ],
+    "sponsor_tier": 1,
+    "pricing_type": "subscription",
+    "target_audience": "سرمایه‌گذار صنعتی با ارتباط در شهرک‌های صنعتی و تجربه تامین مالی زنجیره تامین",
+    "productplus_metadata": {
+      "project_id": 2,
+      "slug": "forgechain",
+      "stage": "زنجیره تامین",
+      "status": "scheduled",
+      "funding_required": 24000000000,
+      "source": "productplus-db"
+    }
   }
 ]

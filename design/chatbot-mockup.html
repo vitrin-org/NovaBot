@@ -155,6 +155,22 @@
         .match-fill { height: 100%; background: #3b82f6; border-radius: 3px; }
         .match-pct { font-size: 11px; color: #9ca3af; white-space: nowrap; }
 
+        /* Feedback buttons */
+        .feedback-row { display: flex; gap: 6px; margin-top: 10px; border-top: 1px solid #f3f4f6; padding-top: 10px; }
+        .fb-btn {
+            flex: 1;
+            border-radius: 8px;
+            border: 1.5px solid #d1d5db;
+            padding: 6px 8px;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            text-align: center;
+        }
+        .fb-btn.up { background: #ecfdf5; border-color: #6ee7b7; color: #065f46; }
+        .fb-btn.down { background: #fef2f2; border-color: #fca5a5; color: #991b1b; }
+        .fb-btn:hover { opacity: 0.8; }
+
         /* Cost bar */
         .cost-bar {
             background: #f9fafb;
@@ -309,7 +325,75 @@
                 <div class="frame-label">مرحله ۲: توضیح چالش</div>
             </div>
 
-            <!-- Frame 3: Quiz Step 3 -->
+            <!-- Frame 3: Quiz Step 3 (Role) -->
+            <div class="frame-wrapper">
+                <div class="phone">
+                    <div class="header">
+                        <div class="header-left">
+                            <div class="header-btn">
+                                <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                            </div>
+                            <div class="header-btn">
+                                <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+                            </div>
+                            <div>
+                                <div class="header-title">نوابات</div>
+                                <div class="header-sub">بهترین ابزارها را برای کسب‌وکارتان پیدا کنید</div>
+                            </div>
+                        </div>
+                        <div class="close-btn">
+                            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+                        </div>
+                    </div>
+                    <div class="body">
+                        <div class="quiz-label">نقش شما چیست؟</div>
+                        <div class="pills">
+                            <div class="pill">موسس / تبلیغات</div>
+                            <div class="pill selected">مدیر محصول</div>
+                            <div class="pill">مهندس / توسعه‌دهنده</div>
+                            <div class="pill">عملیات / فروش</div>
+                            <div class="pill">مالی / حسابداری</div>
+                            <div class="pill">سایر</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="frame-label">مرحله ۳: انتخاب نقش</div>
+            </div>
+
+            <!-- Frame 4: Quiz Step 4 (Team Size) -->
+            <div class="frame-wrapper">
+                <div class="phone">
+                    <div class="header">
+                        <div class="header-left">
+                            <div class="header-btn">
+                                <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                            </div>
+                            <div class="header-btn">
+                                <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+                            </div>
+                            <div>
+                                <div class="header-title">نوابات</div>
+                                <div class="header-sub">بهترین ابزارها را برای کسب‌وکارتان پیدا کنید</div>
+                            </div>
+                        </div>
+                        <div class="close-btn">
+                            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+                        </div>
+                    </div>
+                    <div class="body">
+                        <div class="quiz-label">اندازه تیم شما چقدر است؟</div>
+                        <div class="pills">
+                            <div class="pill">۱-۵ نفر</div>
+                            <div class="pill selected">۶-۲۰ نفر</div>
+                            <div class="pill">۲۱-۱۰۰ نفر</div>
+                            <div class="pill">۱۰۰+ نفر</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="frame-label">مرحله ۴: اندازه تیم</div>
+            </div>
+
+            <!-- Frame 5: Quiz Step 5 (Budget) -->
             <div class="frame-wrapper">
                 <div class="phone">
                     <div class="header">
@@ -332,19 +416,16 @@
                     <div class="body">
                         <div class="quiz-label">محدوده بودجه شما چقدر است؟</div>
                         <div class="pills">
-                            <div class="pill">رایگان</div>
-                            <div class="pill">کمتر از ۲ میلیون تومان</div>
-                            <div class="pill selected">۲ تا ۸ میلیون تومان</div>
-                            <div class="pill">۸ تا ۲۰ میلیون تومان</div>
-                            <div class="pill">بیشتر از ۲۰ میلیون تومان</div>
+                            <div class="pill selected">رایگان</div>
+                            <div class="pill">پرداختی</div>
                         </div>
-                        <button class="btn">دریافت پیشنهادات</button>
+                        <button class="btn" style="margin-top: 12px;">دریافت پیشنهادات</button>
                     </div>
                 </div>
-                <div class="frame-label">مرحله ۳: انتخاب بودجه</div>
+                <div class="frame-label">مرحله ۵: انتخاب بودجه</div>
             </div>
 
-            <!-- Frame 4: Basket Result -->
+            <!-- Frame 6: Basket Result -->
             <div class="frame-wrapper">
                 <div class="phone">
                     <div class="header">
@@ -383,6 +464,10 @@
                                 <div class="match-bar"><div class="match-fill" style="width:85%"></div></div>
                                 <span class="match-pct">۸۵٪</span>
                             </div>
+                            <div class="feedback-row">
+                                <div class="fb-btn up">مفید</div>
+                                <div class="fb-btn down">غیر مناسب</div>
+                            </div>
                         </div>
 
                         <div class="product-card">
@@ -395,6 +480,10 @@
                             <div class="match-row">
                                 <div class="match-bar"><div class="match-fill" style="width:78%"></div></div>
                                 <span class="match-pct">۷۸٪</span>
+                            </div>
+                            <div class="feedback-row">
+                                <div class="fb-btn up">مفید</div>
+                                <div class="fb-btn down">غیر مناسب</div>
                             </div>
                         </div>
 
@@ -411,7 +500,7 @@
                 <div class="frame-label">نتیجه: سبد محصول پیشنهادی</div>
             </div>
 
-            <!-- Frame 5: History Panel -->
+            <!-- Frame 7: History Panel -->
             <div class="frame-wrapper">
                 <div class="phone">
                     <div class="header">
@@ -473,7 +562,7 @@
                 <div class="frame-label">تاریخچه گفتگوها (۵ مورد اخیر)</div>
             </div>
 
-            <!-- Frame 6: Chat -->
+            <!-- Frame 8: Chat -->
             <div class="frame-wrapper">
                 <div class="phone">
                     <div class="header">
