@@ -15,15 +15,15 @@ NovaBot is a full-stack AI assistant that helps users find the best digital tool
 
 ## Architecture
 
-- **Backend**: FastAPI + LangChain + Qdrant (vector DB) + OpenAI-compatible LLM API
+- **Backend**: FastAPI + LangChain + Qdrant (vector DB) + Google AI Studio (Gemini)
 - **Frontend**: Next.js 14 + React 18 + Tailwind CSS
 - **Embeddings**: `intfloat/multilingual-e5-large` (local SentenceTransformer) or OpenAI `text-embedding-3-small`
 - **LLM**: Any OpenAI-compatible endpoint (configurable model)
 
 ```
 [Main Website] → [ChatWidget (React)] → [FastAPI Backend] → [Qdrant Vector DB]
-                                                                    ↓
-                                                           [LLM API (OpenAI-compatible)]
+                                                                     ↓
+                                                            [LLM API (Google AI Studio / Gemini)]
 ```
 
 ## Quick Start
@@ -33,7 +33,7 @@ NovaBot is a full-stack AI assistant that helps users find the best digital tool
 - Python 3.11+
 - Node.js 18+
 - Docker (for Qdrant)
-- OpenAI-compatible LLM API key
+- Google Gemini API key (from [Google AI Studio](https://aistudio.google.com/))
 
 ### 1. Start Qdrant (Vector Database)
 
@@ -147,9 +147,9 @@ All backend configuration lives in `backend/.env`:
 
 | Variable | Description | Default |
 |----------|-------------|---------|
-| `API_BASE_URL` | OpenAI-compatible LLM API endpoint | — |
-| `API_KEY` | LLM API key | — |
-| `LLM_MODEL` | Model name (e.g., `gpt-5-mini`) | — |
+| `API_BASE_URL` | Google AI Studio endpoint | `https://generativelanguage.googleapis.com/v1beta` |
+| `API_KEY` | Gemini API key (from Google AI Studio) | — |
+| `LLM_MODEL` | Gemini model name (e.g., `gemini-1.5-flash`) | `gemini-1.5-flash` |
 | `QDRANT_URL` | Qdrant vector DB URL | `http://localhost:6333` |
 | `EMBEDDING_PROVIDER` | `local` (SentenceTransformer) or `openai` | `local` |
 | `DATA_SOURCE` | `mock` (JSON) or `productplus` (real API/DB) | `mock` |

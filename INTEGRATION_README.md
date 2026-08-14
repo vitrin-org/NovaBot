@@ -104,9 +104,9 @@ novabot/
         ▼
 [Qdrant Vector DB]
         │
-        │  (4) LLM (OpenAI-compatible) via proxy
+        │  (4) LLM (Google Gemini via Google AI Studio)
         ▼
-[LLM API (e.g. GPT-5-mini, Gemini)]
+[Gemini API (e.g. gemini-1.5-flash, gemini-1.5-pro)]
         │
         │  (5) Responses flow back to widget
         ▼
@@ -130,7 +130,7 @@ novabot/
 
 - Python 3.11+
 - Docker (for Qdrant)
-- An OpenAI-compatible API endpoint (e.g., `https://hooshyar.payampardaz.com/api/v1`) and valid API key
+- Google Gemini API key from [Google AI Studio](https://aistudio.google.com/)
 - Node.js 18+ (for optional frontend build)
 
 ### 3.2 Environment Configuration (.env)
@@ -145,12 +145,12 @@ cp .env.example .env
 Edit `.env`:
 
 ```env
-# LLM API (OpenAI-compatible)
-API_BASE_URL=https://your-llm-provider.com/v1
-API_KEY=sk-your-api-key-here
+# Google AI Studio (Gemini)
+API_BASE_URL=https://generativelanguage.googleapis.com/v1beta
+API_KEY=your-gemini-api-key-here
 
-# LLM model name (must be available at your API endpoint)
-LLM_MODEL=gpt-5-mini
+# Gemini model (available at Google AI Studio)
+LLM_MODEL=gemini-1.5-flash
 
 # Qdrant vector database
 QDRANT_URL=http://localhost:6333
@@ -726,7 +726,7 @@ The widget is currently configured for Persian (RTL). To switch to English:
 ### Embeddings are slow or fail
 
 - If using `EMBEDDING_PROVIDER=local`, the first load downloads the `multilingual-e5-large` model (~1GB). Ensure you have a stable internet connection and disk space.
-- If using `EMBEDDING_PROVIDER=openai`, verify `API_BASE_URL` points to your OpenAI-compatible endpoint and `API_KEY` is valid.
+- If using `EMBEDDING_PROVIDER=openai`, verify `API_BASE_URL` points to your OpenAI-compatible endpoint and `API_KEY` is valid. Otherwise, `EMBEDDING_PROVIDER=local` uses the local SentenceTransformer model.
 
 ### Chat history resets on page refresh
 
@@ -740,7 +740,7 @@ The widget stores sessions in `localStorage` under the key `digiyar_sessions`. S
 ### Production deployment checklist
 
 - [ ] Set `DATA_SOURCE=productplus` (or keep `mock` for testing)
-- [ ] Configure `API_BASE_URL` and `API_KEY` with production LLM credentials
+    - [ ] Configure `API_KEY` with your Google Gemini API key
 - [ ] Set `EMBEDDING_PROVIDER` to `openai` for production (faster, no model download)
 - [ ] Seed products via `python scripts/seed.py`
 - [ ] Run uvicorn/gunicorn on port 8000
